@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Signalqualität -->
+    <string name="signal_quality_excellent">Sehr gut</string>
+    <string name="signal_quality_good">Gut</string>
+    <string name="signal_quality_fair">Mittel</string>
+    <string name="signal_quality_poor">Schwach</string>
+    <string name="signal_quality_bad">Sehr schwach</string>
+    <string name="signal_quality_unknown">Kein Messwert</string>
+
+    <!-- Aktionen -->
+    <string name="action_copy">Kopieren</string>
+    <string name="action_share">Teilen</string>
+    <string name="action_export">Exportieren</string>
+    <string name="action_retry">Erneut versuchen</string>
+    <string name="action_grant_permission">Berechtigung erteilen</string>
+    <string name="action_open_settings">Einstellungen öffnen</string>
+    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="share_chooser_title">Ergebnis teilen</string>
+
+    <!-- Zustände -->
+    <string name="state_loading">Messung läuft…</string>
+    <string name="state_empty_title">Keine Ergebnisse</string>
+    <string name="state_empty_description">Es wurde nichts gefunden. Das kann ein gültiges Ergebnis sein — prüfe die Parameter und starte erneut.</string>
+
+    <!-- Fehlertitel -->
+    <string name="error_title_permission">Berechtigung fehlt</string>
+    <string name="error_title_location_disabled">Standort ist aus</string>
+    <string name="error_title_no_network">Kein Netz</string>
+    <string name="error_title_host_unreachable">Host nicht erreichbar</string>
+    <string name="error_title_timeout">Zeitüberschreitung</string>
+    <string name="error_title_connection_refused">Verbindung abgelehnt</string>
+    <string name="error_title_port_in_use">Port bereits belegt</string>
+    <string name="error_title_scan_throttled">Scan-Drosselung aktiv</string>
+    <string name="error_title_multicast">Multicast-Lock verweigert</string>
+    <string name="error_title_native">Native Komponente nicht verfügbar</string>
+    <string name="error_title_unsupported">Auf diesem Gerät nicht unterstützt</string>
+    <string name="error_title_invalid_input">Ungültige Eingabe</string>
+    <string name="error_title_io">Lese-/Schreibfehler</string>
+    <string name="error_title_auth_failed">Authentifizierung fehlgeschlagen</string>
+    <string name="error_title_host_key_unknown">Unbekannter Host-Schlüssel</string>
+    <string name="error_title_host_key_changed">Host-Schlüssel hat sich geändert</string>
+    <string name="error_title_host_key_rejected">Host-Schlüssel abgelehnt</string>
+    <string name="error_title_unknown">Unerwarteter Fehler</string>
+
+    <!-- Handlungsempfehlungen -->
+    <string name="error_hint_permission">Erteile die Berechtigung, um die Messung durchzuführen.</string>
+    <string name="error_hint_permission_permanent">Die Berechtigung wurde dauerhaft abgelehnt. Aktiviere sie in den Systemeinstellungen dieser App.</string>
+    <string name="error_hint_location_disabled">Schalte den Standort ein — Android liefert Cell Identity und WLAN-Scanergebnisse nur bei aktivem Standort.</string>
+    <string name="error_hint_no_network">Prüfe WLAN oder mobile Daten.</string>
+    <string name="error_hint_host_unreachable">Prüfe Hostname oder IP-Adresse und ob das Ziel im selben Netz liegt.</string>
+    <string name="error_hint_timeout">Das Ziel hat nicht rechtzeitig geantwortet. Erhöhe den Timeout oder prüfe eine Firewall dazwischen.</string>
+    <string name="error_hint_connection_refused">Der Port ist geschlossen oder es lauscht kein Dienst darauf.</string>
+    <string name="error_hint_port_in_use">Wähle einen anderen Port oder beende den belegenden Dienst. Ports unter 1024 sind nicht bindbar.</string>
+    <string name="error_hint_scan_throttled">Android begrenzt WLAN-Scans auf 4 pro 2 Minuten. Abschalten geht nur in den Entwickleroptionen.</string>
+    <string name="error_hint_scan_throttled_countdown">Android begrenzt WLAN-Scans auf 4 pro 2 Minuten. Nächster Scan in %1$d s möglich.</string>
+    <string name="error_hint_multicast">mDNS und SSDP brauchen einen Multicast-Lock. Prüfe die WLAN-Verbindung und versuche es erneut.</string>
+    <string name="error_hint_native">Die native Komponente konnte nicht geladen werden. Weiche in den Einstellungen auf ein anderes Verfahren aus.</string>
+    <string name="error_hint_unsupported">Dieses Gerät oder diese Android-Version stellt die nötige Schnittstelle nicht bereit.</string>
+    <string name="error_hint_invalid_input">Prüfe die eingegebenen Werte.</string>
+    <string name="error_hint_io">Lesen oder Schreiben ist fehlgeschlagen. Prüfe Speicherplatz und Berechtigungen.</string>
+    <string name="error_hint_auth_failed">Prüfe Benutzername, Passwort oder privaten Schlüssel.</string>
+    <string name="error_hint_host_key_unknown">Dem Host wird noch nicht vertraut. Prüfe den Fingerabdruck vor dem Verbinden.</string>
+    <string name="error_hint_host_key_changed">Möglicher Man-in-the-Middle-Angriff oder geänderter Serverschlüssel. Prüfe den Fingerabdruck.</string>
+    <string name="error_hint_host_key_rejected">Verbindung abgebrochen, da dem Host-Schlüssel nicht vertraut wurde.</string>
+    <string name="error_hint_unknown">Ursache unbekannt. Das technische Detail steht unten.</string>
+
+</resources>

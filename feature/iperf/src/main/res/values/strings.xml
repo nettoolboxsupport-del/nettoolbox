@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_iperf_title">iperf3</string>
+    <string name="iperf3_subtitle">Throughput measurement against an iperf3 server</string>
+
+    <string name="action_start">Start</string>
+
+    <!-- Client -->
+    <string name="iperf3_mode_client">Client</string>
+    <string name="iperf3_host_label">Server address</string>
+    <string name="iperf3_port_label">Port</string>
+    <string name="iperf3_reverse">Reverse (server sends)</string>
+    <string name="iperf3_running">Measuring… %1$d s</string>
+    <string name="iperf3_no_cancel_note">A running test cannot be interrupted: libiperf offers no way to abort one. That is why only short durations are offered.</string>
+    <string name="iperf3_sent">Sent</string>
+    <string name="iperf3_received">Received</string>
+    <string name="iperf3_retransmits">Retransmits</string>
+    <string name="iperf3_summary_unparsed">The summary fields could not be read. The raw JSON is complete and is included in the export.</string>
+
+    <!-- Server -->
+    <string name="iperf3_mode_server">Server</string>
+    <string name="iperf3_server_port_label">Listening port</string>
+    <string name="iperf3_server_port_hint">Ports below 1024 cannot be bound by an app. Default is 5201.</string>
+    <string name="iperf3_server_start">Start server</string>
+    <string name="iperf3_server_stop">Stop server</string>
+    <string name="iperf3_server_listening">Listening on port %1$d</string>
+    <string name="iperf3_server_waiting">Waiting for a client…</string>
+    <!-- A plural, not a format string: "1 completed tests" is wrong in both
+         languages, and German needs a different adjective ending in the
+         singular, which no amount of string formatting can produce. -->
+    <plurals name="iperf3_server_tests">
+        <item quantity="one">%1$d completed test</item>
+        <item quantity="other">%1$d completed tests</item>
+    </plurals>
+    <string name="iperf3_server_clear_results">Clear</string>
+    <string name="iperf3_server_no_tests">No test has run yet.</string>
+    <string name="iperf3_server_no_json">The test finished, but libiperf returned no JSON at all.</string>
+    <string name="iperf3_server_addresses">Reachable at: %1$s</string>
+    <string name="iperf3_server_stop_note">Stopping takes effect once the current wait ends — the app briefly connects to its own port to bring that about.</string>
+    <string name="iperf3_server_stopping">Stopping…</string>
+    <string name="iperf3_server_stop_timeout">libiperf did not return from the stop request. The display has been released so you can carry on, but the native server may still hold its port. If a restart fails to bind, only restarting the app will clear it.</string>
+    <string name="iperf3_server_stopping_note">A test that is already running cannot be cut short — libiperf offers no way to abort one, and severing it would hand the client a broken result. The server shuts down as soon as the current test finishes; how long that takes is set by the client.</string>
+
+    <string name="iperf3_server_channel_name">iperf3 server</string>
+    <string name="iperf3_server_channel_description">Shown while the iperf3 server is listening.</string>
+    <string name="iperf3_server_notification_title">iperf3 server on port %1$d</string>
+    <plurals name="iperf3_server_notification_text">
+        <item quantity="one">%1$d completed test</item>
+        <item quantity="other">%1$d completed tests</item>
+    </plurals>
+    <string name="iperf3_server_notification_stop">Stop</string>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_wifi_title">WLAN</string>
+
+    <!-- Ansichten -->
+    <string name="wifi_mode_networks">Netze</string>
+    <string name="wifi_mode_channels">Kanäle</string>
+    <string name="wifi_mode_history">Verlauf</string>
+    <string name="wifi_mode_connection">Verbindung</string>
+
+    <!-- Liste -->
+    <string name="wifi_search_label">SSID oder BSSID suchen</string>
+    <string name="wifi_band_all">Alle Bänder</string>
+    <string name="wifi_only_watched">Merkliste</string>
+    <string name="wifi_watch">Merken</string>
+    <string name="wifi_unwatch">Vergessen</string>
+    <string name="wifi_sort_signal">Signal</string>
+    <string name="wifi_sort_ssid">Name</string>
+    <string name="wifi_sort_channel">Kanal</string>
+    <string name="wifi_empty_title">Keine Netze</string>
+    <string name="wifi_empty_description">Bisher wurde nichts empfangen. Prüfe, ob WLAN eingeschaltet ist, und warte auf den nächsten Scan.</string>
+
+    <!-- Scannen -->
+    <string name="wifi_scan_now">Jetzt scannen</string>
+    <string name="wifi_scan_in">Nächster Scan in %1$d s</string>
+    <string name="wifi_throttle_explanation">Android erlaubt vier Scans pro zwei Minuten. Die Liste aktualisiert sich trotzdem aus Scans des Systems und anderer Apps. Abschalten lässt sich die Grenze nur in den Entwickleroptionen.</string>
+    <string name="wifi_open_developer_options">Entwickleroptionen öffnen</string>
+    <string name="wifi_recommended_channel">Aktuell freiester 2,4-GHz-Kanal: %1$d</string>
+
+    <!-- Kanaldiagramm -->
+    <string name="wifi_networks_in_band">%1$d Netze in diesem Band</string>
+
+    <!-- Signalverlauf -->
+    <string name="wifi_history_empty_title">Noch zu wenige Messwerte</string>
+    <string name="wifi_history_empty_description">Das Diagramm braucht mindestens zwei Scans. Setze Netze auf die Merkliste, um genau diese zu verfolgen.</string>
+    <string name="wifi_history_hint">Ohne Merkliste werden die drei stärksten Netze gezeichnet. Das Diagramm behält je Intervall den schlechtesten Wert — darauf kommt es beim Ausrichten einer Antenne an.</string>
+
+    <!-- Aktive Verbindung -->
+    <string name="wifi_connection_none_title">Keine aktive Verbindung</string>
+    <string name="wifi_connection_none_description">Das Gerät ist derzeit mit keinem Netz verbunden.</string>
+    <string name="wifi_detail_ssid">SSID</string>
+    <string name="wifi_detail_bssid">BSSID</string>
+    <string name="wifi_detail_signal">Signal</string>
+    <string name="wifi_detail_channel">Kanal</string>
+    <string name="wifi_detail_frequency">Frequenz</string>
+    <string name="wifi_detail_link_speed">Verbindungsrate</string>
+    <string name="wifi_detail_interface">Schnittstelle</string>
+    <string name="wifi_detail_ipv4">IPv4</string>
+    <string name="wifi_detail_ipv6">IPv6</string>
+    <string name="wifi_detail_gateway">Gateway</string>
+    <string name="wifi_detail_dns">DNS</string>
+    <string name="wifi_detail_mtu">MTU</string>
+    <string name="wifi_detail_unavailable">—</string>
+    <string name="wifi_captive_portal">Captive Portal: das Netz verlangt eine Anmeldung, bevor Datenverkehr durchgeht.</string>
+    <string name="wifi_metered">Diese Verbindung ist als getaktet markiert.</string>
+</resources>

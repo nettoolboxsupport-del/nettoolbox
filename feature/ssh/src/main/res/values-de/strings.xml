@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_ssh_title">SSH-Terminal</string>
+    <string name="feature_ssh_subtitle">Sicherer Shell-Client und VT100/xterm-Emulator</string>
+
+    <!-- Tabs & Bereiche -->
+    <string name="ssh_tab_connect">Verbindung</string>
+    <string name="ssh_tab_terminal">Terminal</string>
+    <string name="ssh_tab_hosts">Hosts</string>
+
+    <!-- Verbindungsformular -->
+    <string name="ssh_host_label">Host / IP-Adresse</string>
+    <string name="ssh_host_placeholder">192.168.1.1 oder server.lan</string>
+    <string name="ssh_port_label">Port</string>
+    <string name="ssh_user_label">Benutzername</string>
+    <string name="ssh_user_placeholder">root, admin, benutzer…</string>
+    <string name="ssh_auth_type_label">Authentifizierung</string>
+    <string name="ssh_auth_password">Passwort</string>
+    <string name="ssh_auth_key">Privater Schlüssel</string>
+    <string name="ssh_password_label">Passwort</string>
+    <string name="ssh_key_pem_label">Privater Schlüssel (OpenSSH / PEM)</string>
+    <string name="ssh_key_pem_placeholder">-----BEGIN OPENSSH PRIVATE KEY-----…</string>
+    <string name="ssh_passphrase_label">Schlüssel-Passphrase (optional)</string>
+    <string name="ssh_save_profile_label">Verbindungsprofil speichern</string>
+    <string name="ssh_profile_name_label">Profilname</string>
+    <string name="ssh_profile_name_placeholder">z. B. Core-Switch, Hauptrouter</string>
+
+    <!-- Aktionen -->
+    <string name="ssh_action_connect">Verbinden</string>
+    <string name="ssh_action_disconnect">Trennen</string>
+    <string name="ssh_action_clear">Bildschirm leeren</string>
+    <string name="ssh_action_load_profile">Laden</string>
+    <string name="ssh_action_delete_profile">Löschen</string>
+    <string name="ssh_action_forget_host">Vergessen</string>
+
+    <!-- Statusmeldungen -->
+    <string name="ssh_status_idle">Bereit zum Verbinden</string>
+    <string name="ssh_status_connecting">Verbinde mit %1$s:%2$d…</string>
+    <string name="ssh_status_authenticating">Authentifiziere…</string>
+    <string name="ssh_status_connected">Verbunden: %1$s</string>
+    <string name="ssh_status_disconnected">Sitzung beendet</string>
+
+    <!-- Host-Key-Prüfdialoge -->
+    <string name="ssh_dialog_unknown_title">Unbekannter Host-Schlüssel</string>
+    <string name="ssh_dialog_unknown_message">Erstverbindung zu %1$s:%2$d. Bitte verifizieren Sie den Fingerabdruck mit dem Server-Administrator, bevor Sie vertrauen:</string>
+    <string name="ssh_dialog_key_type">Typ: %1$s</string>
+    <string name="ssh_dialog_fingerprint">Fingerabdruck: %1$s</string>
+    <string name="ssh_dialog_trust_button">Vertrauen &amp; Verbinden</string>
+    <string name="ssh_dialog_cancel_button">Abbrechen</string>
+
+    <string name="ssh_dialog_changed_title">SICHERHEITSWARNUNG: Host-Schlüssel geändert!</string>
+    <string name="ssh_dialog_changed_message">Der von %1$s:%2$d gesendete Schlüssel STIMMT NICHT mit dem bisher gespeicherten überein! Dies deutet auf einen Man-in-the-Middle-Angriff oder eine Neuinstallation des Servers hin.</string>
+    <string name="ssh_dialog_stored_fingerprint">Bisher vertraut:\n%1$s</string>
+    <string name="ssh_dialog_presented_fingerprint">Neu empfangen:\n%1$s</string>
+    <string name="ssh_dialog_accept_changed_button">Schlüssel ersetzen &amp; Verbinden (Gefahr)</string>
+    <string name="ssh_dialog_reject_changed_button">Abbrechen (Empfohlen)</string>
+
+    <!-- Profile & Bekannte Hosts -->
+    <string name="ssh_profiles_title">Gespeicherte Profile</string>
+    <string name="ssh_profiles_empty">Noch keine Profile gespeichert. Im Reiter „Verbindung" anlegen.</string>
+    <string name="ssh_known_hosts_title">Bekannte Host-Schlüssel</string>
+    <string name="ssh_known_hosts_empty">Noch keine bekannten Hosts gespeichert.</string>
+    <string name="ssh_known_host_added">Vertraut seit: %1$s</string>
+
+    <!-- Tastatur-Zusatzleiste -->
+    <string name="ssh_mod_esc">ESC</string>
+    <string name="ssh_mod_tab">TAB</string>
+    <string name="ssh_mod_ctrl">STRG</string>
+    <string name="ssh_mod_alt">ALT</string>
+    <string name="ssh_mod_fn">Fn</string>
+    <string name="ssh_mod_keys_title">Sondertasten</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_rationale_cellular">Android only reports cell identity and signal metrics while precise location is granted. The measurements stay on the device.</string>
+    <string name="permission_rationale_wifi">Wi-Fi scan results count as location data on Android. Without precise location the system returns an empty list.</string>
+    <string name="permission_rationale_notifications">Long-running measurements and the iperf3 server run as a foreground service, which Android only shows with notification permission.</string>
+</resources>

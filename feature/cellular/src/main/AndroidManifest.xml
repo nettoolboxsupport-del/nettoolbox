@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+          Fully qualified on purpose: a relative name in a library manifest is
+          resolved against the consuming app's applicationId, not against this
+          module's namespace, which would point at a class that does not exist.
+        -->
+        <service
+            android:name="de.nettoolbox.feature.cellular.service.CellularLoggingService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+        <!-- "location" only. The service observes location and telephony and
+             writes samples to the local database; it transfers nothing over the
+             network, so "dataSync" would be a false declaration. Since
+             Android 14 every declared type has to be justified to Google
+             separately, and dataSync is the one they scrutinise hardest. -->
+    </application>
+
+</manifest>

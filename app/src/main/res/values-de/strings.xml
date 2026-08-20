@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="destination_dashboard">Übersicht</string>
+    <string name="dashboard_subtitle">Feld-Werkzeugkasten für Netzwerktechniker</string>
+    <string name="dashboard_greeting">Hallo %1$s!</string>
+    <string name="dashboard_open_settings">Einstellungen</string>
+
+    <!-- Einstellungen -->
+    <string name="settings_section_person">Du</string>
+    <string name="settings_name_label">Dein Name</string>
+    <string name="settings_name_hint">Erscheint als Begrüßung auf der Übersicht. Bleibt auf diesem Gerät.</string>
+
+    <string name="settings_section_language">Sprache</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_language_german">Deutsch</string>
+    <string name="settings_language_english">English</string>
+
+    <string name="settings_section_appearance">Darstellung</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_dark">Dunkel</string>
+    <string name="settings_theme_field">Feld</string>
+    <string name="settings_theme_field_hint">Der Feld-Modus ist ein reinschwarzes, kontrastreiches Thema für direkte Sonne.</string>
+    <string name="settings_dynamic_color">Dynamische Farben</string>
+    <string name="settings_dynamic_color_hint">Übernimmt die Akzentfarbe vom Hintergrundbild. Ab Android 12.</string>
+    <string name="settings_section_about">Rechtliches</string>
+    <string name="settings_open_about">Lizenzen und Namensnennung</string>
+    <string name="about_version">Version %1$s (Build %2$d)</string>
+    <string name="about_licence_apache">NetToolbox steht unter der Apache-Lizenz 2.0.</string>
+    <string name="about_privacy">Alle Messdaten bleiben auf dem Gerät. Es gibt keine Telemetrie, und ein Export findet nur statt, wenn du ihn auslöst.</string>
+    <string name="about_data_sources">Datenquellen</string>
+    <string name="about_components">Verwendete Komponenten</string>
+    <string name="about_attribution_required">Namensnennung ist durch die Lizenz vorgeschrieben — dieser Hinweis darf nicht entfernt werden.</string>
+    <string name="about_full_licences_hint">Die vollständigen Lizenztexte liegen der Quelltextausgabe als LICENSE und THIRD_PARTY_LICENSES.md bei.</string>
+    <!-- Onboarding -->
+    <string name="onboarding_title">Willkommen bei NetToolbox</string>
+    <string name="onboarding_intro">Ein Diagnosewerkzeug für Netzwerktechniker: Mobilfunk- und WLAN-Analyse, Ping, Traceroute, DNS, Scanner, Durchsatzmessung und ein SSH-Terminal.</string>
+    <string name="onboarding_privacy_title">Deine Messdaten bleiben hier</string>
+    <string name="onboarding_privacy_body">Es wird nichts übertragen. Keine Telemetrie, kein Konto, kein Server hinter dieser App. Messwerte liegen auf diesem Gerät, und ein Export findet nur statt, wenn du ihn auslöst und das Ziel selbst wählst.</string>
+    <string name="onboarding_permissions_title">Berechtigungen</string>
+    <string name="onboarding_permissions_optional">Du kannst alle überspringen. Jedes Werkzeug fragt erneut, sobald es eine braucht — und keines erhebt mehr, als es dir anzeigt.</string>
+    <string name="onboarding_permission_cellular">Mobilfunkmessungen</string>
+    <string name="onboarding_permission_wifi">WLAN-Analyse</string>
+    <string name="onboarding_permission_notifications">Langlaufende Messungen</string>
+    <string name="onboarding_grant">Erlauben</string>
+    <string name="onboarding_granted">Erteilt</string>
+    <string name="onboarding_open_settings">Einstellungen öffnen</string>
+    <string name="onboarding_start">Los geht es</string>
+    <!-- Widget -->
+    <string name="widget_description">Der aktuelle Netzzustand auf einen Blick: Verbindung, Signal und IP-Adresse. Zum Aktualisieren auf die Werte tippen.</string>
+    <string name="widget_active_prefix">Aktiv:</string>
+    <string name="widget_transport_wifi">WLAN</string>
+    <string name="widget_transport_cellular">Mobilfunk</string>
+    <string name="widget_transport_offline">Offline</string>
+    <string name="widget_label_ssid">SSID</string>
+    <string name="widget_label_signal">Signal</string>
+    <string name="widget_label_channel">Kanal</string>
+    <string name="widget_label_operator">Netz</string>
+    <string name="widget_label_technology">Technik</string>
+    <string name="widget_label_ip">IP</string>
+    <string name="widget_needs_permission">Berechtigung fehlt</string>
+    <string name="widget_read_at">Stand %1$s — tippen zum Aktualisieren</string>
+</resources>

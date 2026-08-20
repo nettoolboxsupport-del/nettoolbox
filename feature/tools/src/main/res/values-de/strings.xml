@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_tools_title">Werkzeuge</string>
+    <string name="feature_tools_placeholder">Ping, Traceroute, DNS, Scanner, Subnetzrechner und WOL folgen in Phase 2.</string>
+
+    <!-- Werkzeugliste -->
+    <string name="tool_ping">Ping</string>
+    <string name="tool_ping_description">Laufzeiten, Paketverlust, Live-Diagramm</string>
+    <string name="tool_subnet">Subnetzrechner</string>
+    <string name="tool_subnet_description">IPv4 und IPv6, Hostbereich, Aufteilung</string>
+    <string name="tool_wol">Wake-on-LAN</string>
+    <string name="tool_wol_description">Magic Packet an eine MAC-Adresse</string>
+    <string name="tool_dns">DNS-Abfrage</string>
+    <string name="tool_dns_description">A bis CAA, mehrere Resolver parallel, DoH und DoT</string>
+    <string name="tool_port_scan">Port-Scanner</string>
+    <string name="tool_ip_scan">IP-Scanner</string>
+    <string name="tool_http_tls">HTTP/TLS-Inspector</string>
+    <string name="tool_traceroute">Traceroute</string>
+    <string name="tool_traceroute_description">TTL-Rampe über ICMP, Laufzeit je Hop</string>
+    <string name="tool_upcoming">Kommt in Phase 2b</string>
+    <string name="tool_upcoming_native">Benötigt das native ICMP-Modul aus Phase 5</string>
+
+    <!-- Traceroute -->
+    <string name="traceroute_target_label">Host oder IP-Adresse</string>
+    <string name="traceroute_native_note">Nutzt das native ICMP-Modul (Phase 5). Ist es auf diesem Gerät nicht verfügbar, verwende stattdessen die automatische Methodenerkennung von Ping.</string>
+    <string name="traceroute_destination">Ziel erreicht</string>
+    <string name="traceroute_unreachable">nicht erreichbar — hier gestoppt</string>
+
+    <!-- Subnetzrechner -->
+    <string name="subnet_input_label">Adresse mit Präfix oder Maske</string>
+    <string name="subnet_hint">Zum Beispiel 192.168.1.10/24, 10.0.0.1 255.255.255.0 oder 2001:db8::1/64</string>
+    <string name="subnet_invalid">Keine gültige IPv4- oder IPv6-Adresse</string>
+    <string name="subnet_split_title">In kleinere Subnetze aufteilen</string>
+    <string name="subnet_row_address">Adresse</string>
+    <string name="subnet_row_network">Netz</string>
+    <string name="subnet_row_netmask">Netzmaske</string>
+    <string name="subnet_row_wildcard">Wildcard</string>
+    <string name="subnet_row_broadcast">Broadcast</string>
+    <string name="subnet_row_host_range">Hostbereich</string>
+    <string name="subnet_row_usable_hosts">Nutzbare Hosts</string>
+    <string name="subnet_row_total">Adressen gesamt</string>
+    <string name="subnet_row_binary">Adresse (binär)</string>
+    <string name="subnet_row_mask_binary">Netzmaske (binär)</string>
+    <string name="subnet_row_first">Erste Adresse</string>
+    <string name="subnet_row_last">Letzte Adresse</string>
+
+    <!-- Ping -->
+    <string name="ping_target_label">Host oder IP-Adresse</string>
+    <string name="ping_count_endless">Endlos</string>
+    <string name="action_start">Start</string>
+    <string name="action_stop">Stopp</string>
+    <string name="ping_transport_system">ICMP über das System-ping</string>
+    <string name="ping_transport_icmp">ICMP über unprivilegierten Datagram-Socket</string>
+    <string name="ping_transport_tcp">TCP-Connect-Messung — kein ICMP. Misst den Handshake zu einem Port.</string>
+    <string name="ping_statistics">%1$d gesendet, %2$d empfangen, %3$s%% Verlust, ⌀ %4$s ms</string>
+
+    <string name="tool_port_scan_description">TCP-Connect, Voreinstellungen oder eigene Bereiche, optional Banner</string>
+
+    <!-- Verlauf -->
+    <string name="history_title">Verlauf</string>
+    <string name="history_empty_title">Noch keine Läufe</string>
+    <string name="history_empty_description">Jeder Lauf dieses Werkzeugs wird hier festgehalten und kann wiederholt werden.</string>
+    <string name="history_repeat">Wiederholen</string>
+    <string name="history_delete">Löschen</string>
+    <string name="history_clear">Alle löschen</string>
+    <string name="history_success">erfolgreich</string>
+    <string name="history_failed">fehlgeschlagen</string>
+
+    <!-- Port-Scanner -->
+    <string name="portscan_host_label">Host oder IP-Adresse</string>
+    <string name="portscan_preset_quick">Schnell</string>
+    <string name="portscan_preset_common">Gängige</string>
+    <string name="portscan_preset_custom">Eigene</string>
+    <string name="portscan_ports_label">Ports</string>
+    <string name="portscan_ports_hint">Kommagetrennt, Bereiche erlaubt: 22,80,443,8000-8100</string>
+    <string name="portscan_banner">Banner beim Verbinden lesen</string>
+    <string name="portscan_progress">%1$d von %2$d geprüft · %3$d offen</string>
+    <string name="scanner_disclaimer_title">Nur Netze scannen, für die eine Berechtigung besteht</string>
+    <string name="scanner_disclaimer_text">Ein Port-Scan baut echte Verbindungen zum Ziel auf und ist in dessen Logs sichtbar. Führe ihn nur in Netzen und an Systemen aus, die dir gehören oder für die du eine schriftliche Erlaubnis hast. Unbefugtes Scannen kann strafbar sein.</string>
+    <string name="scanner_disclaimer_accept">Ich bin berechtigt</string>
+    <string name="scanner_disclaimer_cancel">Abbrechen</string>
+
+    <!-- DNS -->
+    <string name="dns_name_label">Abzufragender Name</string>
+    <string name="dns_lookup">Abfragen</string>
+    <string name="dns_no_answer">Keine Antwort</string>
+    <string name="dns_no_records">Beantwortet, aber ohne Einträge dieses Typs</string>
+    <string name="dns_ttl">TTL %1$d s</string>
+    <string name="dns_private_active">Privates DNS ist auf diesem Gerät aktiv (%1$s). Die App fragt die unten gewählten Server direkt ab.</string>
+
+    <!-- IP-Scanner -->
+    <string name="tool_ip_scan_description">Hosts im lokalen Subnetz finden: TCP, mDNS, SSDP, NetBIOS</string>
+    <string name="ipscan_subnet_label">Subnetz</string>
+    <string name="ipscan_subnet_hint">Aus der aktiven Verbindung vorbelegt</string>
+    <string name="ipscan_subnet_invalid">Kein gültiges IPv4-Subnetz</string>
+    <string name="ipscan_progress">%1$d von %2$d Adressen · %3$d Hosts</string>
+    <string name="ipscan_open_ports">Offen: %1$s</string>
+
+    <!-- HTTP/TLS-Inspector -->
+    <string name="tool_http_tls_description">Weiterleitungskette, TLS-Version, Zertifikatsablauf</string>
+    <string name="http_url_label">URL</string>
+    <string name="http_url_hint">Ohne Schema wird HTTPS angenommen</string>
+    <string name="http_inspect">Untersuchen</string>
+    <string name="http_loop_detected">Weiterleitungsschleife: eine URL kam zweimal vor.</string>
+    <string name="http_limit_reached">Grenze für Weiterleitungen erreicht — die Kette geht weiter.</string>
+    <string name="http_total">%1$d Schritte · %2$d ms gesamt</string>
+    <string name="http_redirects_to">leitet weiter auf %1$s</string>
+    <string name="http_show_headers">%1$d Header anzeigen</string>
+    <string name="http_hide_headers">%1$d Header ausblenden</string>
+    <string name="http_issuer">Ausgestellt von %1$s</string>
+    <string name="http_valid_until">Gültig bis %1$s · %2$d Tage</string>
+    <string name="http_expired">Dieses Zertifikat ist abgelaufen.</string>
+    <string name="http_not_yet_valid">Dieses Zertifikat ist noch nicht gültig.</string>
+
+    <!-- Wake-on-LAN -->
+    <string name="wol_mac_label">MAC-Adresse</string>
+    <string name="wol_mac_invalid">Sechs Bytes erwartet, z. B. AA:BB:CC:DD:EE:FF</string>
+    <string name="wol_broadcast_label">Broadcast-Adresse</string>
+    <string name="wol_broadcast_hint">Nutze den Subnetz-Broadcast (z. B. 192.168.1.255), wenn das Ziel hinter einem Router liegt.</string>
+    <string name="wol_port_label">Port</string>
+    <string name="wol_send">Magic Packet senden</string>
+    <string name="wol_sent">Paket gesendet. Wake-on-LAN wird nicht bestätigt — das ist keine Rückmeldung, dass das Gerät aufgewacht ist.</string>
+    <string name="wol_recent">Zuletzt verwendet</string>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_wifi_title">Wi-Fi</string>
+
+    <!-- View modes -->
+    <string name="wifi_mode_networks">Networks</string>
+    <string name="wifi_mode_channels">Channels</string>
+    <string name="wifi_mode_history">History</string>
+    <string name="wifi_mode_connection">Connection</string>
+
+    <!-- List -->
+    <string name="wifi_search_label">Search SSID or BSSID</string>
+    <string name="wifi_band_all">All bands</string>
+    <string name="wifi_only_watched">Watchlist</string>
+    <string name="wifi_watch">Watch</string>
+    <string name="wifi_unwatch">Unwatch</string>
+    <string name="wifi_sort_signal">Signal</string>
+    <string name="wifi_sort_ssid">Name</string>
+    <string name="wifi_sort_channel">Channel</string>
+    <string name="wifi_empty_title">No networks</string>
+    <string name="wifi_empty_description">Nothing was received yet. Check that Wi-Fi is switched on, then wait for the next scan.</string>
+
+    <!-- Scanning -->
+    <string name="wifi_scan_now">Scan now</string>
+    <string name="wifi_scan_in">Next scan in %1$d s</string>
+    <string name="wifi_throttle_explanation">Android allows four scans per two minutes. The list still updates from scans by the system and other apps. The limit can only be switched off in the developer options.</string>
+    <string name="wifi_open_developer_options">Open developer options</string>
+    <string name="wifi_recommended_channel">Least congested 2.4 GHz channel right now: %1$d</string>
+
+    <!-- Channel diagram -->
+    <string name="wifi_networks_in_band">%1$d networks in this band</string>
+
+    <!-- Signal history -->
+    <string name="wifi_history_empty_title">Not enough samples yet</string>
+    <string name="wifi_history_empty_description">The chart needs at least two scans. Put networks on the watchlist to follow exactly those.</string>
+    <string name="wifi_history_hint">Without a watchlist the three strongest networks are charted. The chart keeps the worst reading per interval — that is what matters when aiming an antenna.</string>
+
+    <!-- Active connection -->
+    <string name="wifi_connection_none_title">No active connection</string>
+    <string name="wifi_connection_none_description">The device is not connected to a network right now.</string>
+    <string name="wifi_detail_ssid">SSID</string>
+    <string name="wifi_detail_bssid">BSSID</string>
+    <string name="wifi_detail_signal">Signal</string>
+    <string name="wifi_detail_channel">Channel</string>
+    <string name="wifi_detail_frequency">Frequency</string>
+    <string name="wifi_detail_link_speed">Link speed</string>
+    <string name="wifi_detail_interface">Interface</string>
+    <string name="wifi_detail_ipv4">IPv4</string>
+    <string name="wifi_detail_ipv6">IPv6</string>
+    <string name="wifi_detail_gateway">Gateway</string>
+    <string name="wifi_detail_dns">DNS</string>
+    <string name="wifi_detail_mtu">MTU</string>
+    <string name="wifi_detail_unavailable">—</string>
+    <string name="wifi_captive_portal">Captive portal: the network requires a sign-in before traffic passes.</string>
+    <string name="wifi_metered">This connection is marked as metered.</string>
+</resources>

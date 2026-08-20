@@ -1,0 +1,132 @@
+[versions]
+# --- Build toolchain ---------------------------------------------------------
+agp = "8.11.1"
+kotlin = "2.2.0"
+ksp = "2.2.0-2.0.2"
+compileSdk = "36"
+minSdk = "28"
+targetSdk = "36"
+javaVersion = "17"
+
+# --- AndroidX / Jetpack ------------------------------------------------------
+activityCompose = "1.10.1"
+composeBom = "2025.06.01"
+coreKtx = "1.16.0"
+datastore = "1.1.7"
+lifecycle = "2.9.1"
+navigationCompose = "2.9.0"
+room = "2.7.1"
+splashscreen = "1.0.1"
+
+# --- Libraries ---------------------------------------------------------------
+coroutines = "1.10.2"
+hilt = "2.56.2"
+hiltNavigationCompose = "1.2.0"
+kotlinxSerialization = "1.8.1"
+maplibre = "11.8.1"
+okhttp = "4.12.0"
+# SSH transport. jsch 2.28.6 is the mwiede fork (BSD 3-clause), the maintained
+# successor to the dormant JCraft original.
+jsch = "2.28.6"
+# Bouncy Castle supplies ed25519 and x25519 to jsch. See PHASE6B_NOTES.md:
+# jsch needs Java 15+ for ed25519 and Java 11+ for x25519, and Android's JCE
+# provides neither - without this, ed25519 host keys and curve25519-sha256
+# key exchange are unavailable, which rules out many current servers.
+bouncycastle = "1.80"
+
+# --- App widget --------------------------------------------------------------
+# Glance is the Compose-based widget API. 1.1.1 is the newest stable release
+# per Google's Maven group index (1.2.0 is still rc). Chosen over classic
+# RemoteViews because this project has no XML layouts at all and one would be
+# a foreign body.
+glance = "1.1.1"
+
+# --- Baseline profiles -------------------------------------------------------
+# Verified against Google's Maven group index: 1.4.1 is the newest stable
+# androidx.benchmark release (1.5.0 is still rc). uiautomator 2.4.0 likewise.
+benchmark = "1.4.1"
+uiautomator = "2.4.0"
+
+# --- Testing -----------------------------------------------------------------
+junit5 = "5.12.2"
+turbine = "1.2.0"
+androidxTestRunner = "1.6.2"
+androidxTestExtJunit = "1.2.1"
+
+# --- Debug tooling -----------------------------------------------------------
+leakcanary = "2.14"
+
+[libraries]
+# --- AndroidX core -----------------------------------------------------------
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashscreen" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "lifecycle" }
+
+# --- Compose (versions come from the BOM) ------------------------------------
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+# --- Navigation --------------------------------------------------------------
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+# --- Persistence -------------------------------------------------------------
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+androidx-datastore = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
+
+# --- DI ----------------------------------------------------------------------
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+
+# --- Async / serialization ---------------------------------------------------
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+
+# --- Feature libraries (wired up in later phases) ----------------------------
+maplibre-android-sdk = { group = "org.maplibre.gl", name = "android-sdk", version.ref = "maplibre" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+jsch = { group = "com.github.mwiede", name = "jsch", version.ref = "jsch" }
+bouncycastle-provider = { group = "org.bouncycastle", name = "bcprov-jdk18on", version.ref = "bouncycastle" }
+
+# --- Testing -----------------------------------------------------------------
+junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit5" }
+junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junit5" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit5" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
+androidx-glance-appwidget = { group = "androidx.glance", name = "glance-appwidget", version.ref = "glance" }
+androidx-glance-material3 = { group = "androidx.glance", name = "glance-material3", version.ref = "glance" }
+androidx-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmark" }
+androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExtJunit" }
+
+# --- Debug tooling -----------------------------------------------------------
+leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+room = { id = "androidx.room", version.ref = "room" }
+android-test = { id = "com.android.test", version.ref = "agp" }
+baselineprofile = { id = "androidx.baselineprofile", version.ref = "benchmark" }

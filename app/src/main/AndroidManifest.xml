@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ==== Network ==================================================== -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- mDNS / SSDP discovery needs a MulticastLock. -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- ==== Location ==================================================== -->
+    <!-- Mandatory for cell identity and for Wi-Fi scan results. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- ACCESS_BACKGROUND_LOCATION is deliberately NOT declared.
+         Drive-test logging runs in a foreground service of type "location",
+         and Android's documentation is explicit that such a service needs
+         background location only to be *started* while the app is already in
+         the background. This one is always started by the user from the UI, and
+         once running it keeps location access after the user leaves the app.
+         Declaring it anyway would cost a separate Play Store review with a
+         submitted video, and would show users a permission the app does not
+         need. If a scheduled or boot-triggered drive test is ever added, this
+         decision has to be revisited - that is the case that would require it. -->
+
+    <!-- ==== Telephony =================================================== -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- ==== Wi-Fi scanning on Android 13+ ==============================
+         Deliberately WITHOUT usesPermissionFlags="neverForLocation":
+         the Wi-Fi analyzer does derive location from scan results. -->
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+
+    <!-- ==== Foreground services ========================================= -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- ==== Note on storage permissions ================================
+         READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE and REORDER_TASKS turn up
+         in the *debug* merged manifest, contributed by LeakCanary and by an
+         instrumentation-test dependency. They never reach the release build, so
+         nothing has to be removed here and the Play listing is unaffected.
+
+         This note exists because an earlier audit concluded otherwise and added
+         tools:node="remove" entries for all three. The audit was wrong: it
+         grepped with `grep -rh`, which suppresses file names, and then tried to
+         exclude build directories by path - so the filter matched nothing and
+         generated manifests were counted as if they were ours. The manifest
+         merger caught it, warning that there was nothing to remove.
+
+         Export goes exclusively through the Storage Access Framework, which
+         needs no storage permission at all. If a release dependency ever
+         introduces one, it will show up in the merged release manifest under
+         app/build/intermediates/merged_manifest/release/. -->
+
+    <!-- ==== Hardware ==================================================== -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
+
+    <application
+        android:name=".NetToolboxApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NetToolbox.Starting"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode|density|fontScale"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.NetToolbox.Starting"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Network status widget.
+             updatePeriodMillis is 30 minutes because that is the floor Android
+             enforces; anything smaller is silently ignored. The widget
+             therefore shows the time of its reading and refreshes on tap,
+             rather than presenting a possibly stale value as if it were live. -->
+        <receiver
+            android:name="de.nettoolbox.app.widget.NetworkStatusWidgetReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/network_status_widget_info" />
+        </receiver>
+
+    </application>
+
+</manifest>

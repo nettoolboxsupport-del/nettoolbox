@@ -1,0 +1,6 @@
+[submodule "native/iperf3/src/main/cpp/iperf3-src"]
+	path = native/iperf3/src/main/cpp/iperf3-src
+	url = https://github.com/esnet/iperf.git
+[submodule "native/vterm/src/main/cpp/libvterm-src"]
+	path = native/vterm/src/main/cpp/libvterm-src
+	url = https://github.com/neovim/libvterm.git

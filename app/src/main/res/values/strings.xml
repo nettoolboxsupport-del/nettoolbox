@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetToolbox</string>
+    <string name="destination_dashboard">Dashboard</string>
+    <string name="dashboard_title">NetToolbox</string>
+    <string name="dashboard_subtitle">Field toolkit for network engineers</string>
+    <string name="dashboard_greeting">Hello %1$s!</string>
+    <string name="dashboard_open_settings">Settings</string>
+
+    <!-- Settings -->
+    <string name="settings_section_person">You</string>
+    <string name="settings_name_label">Your name</string>
+    <string name="settings_name_hint">Appears as a greeting on the dashboard. Stays on this device.</string>
+
+    <string name="settings_section_language">Language</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_language_german">Deutsch</string>
+    <string name="settings_language_english">English</string>
+
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_field">Field</string>
+    <string name="settings_theme_field_hint">Field mode is a pure black, high-contrast theme for direct sunlight.</string>
+    <string name="settings_dynamic_color">Dynamic colour</string>
+    <string name="settings_dynamic_color_hint">Takes the accent colour from the wallpaper. Android 12 and newer.</string>
+    <string name="settings_section_about">Legal</string>
+    <string name="settings_open_about">Licences and attribution</string>
+    <string name="about_version">Version %1$s (build %2$d)</string>
+    <string name="about_licence_apache">NetToolbox is licensed under the Apache License 2.0.</string>
+    <string name="about_privacy">All measurement data stays on the device. There is no telemetry, and an export happens only when you start one.</string>
+    <string name="about_data_sources">Data sources</string>
+    <string name="about_components">Components used</string>
+    <string name="about_attribution_required">Attribution is required by the licence — this notice must not be removed.</string>
+    <string name="about_full_licences_hint">Full licence texts ship with the source as LICENSE and THIRD_PARTY_LICENSES.md.</string>
+    <!-- Onboarding -->
+    <string name="onboarding_title">Welcome to NetToolbox</string>
+    <string name="onboarding_intro">A diagnostic toolkit for network engineers: cellular and Wi-Fi analysis, ping, traceroute, DNS, scanners, throughput measurement and an SSH terminal.</string>
+    <string name="onboarding_privacy_title">Your measurements stay here</string>
+    <string name="onboarding_privacy_body">Nothing is sent anywhere. There is no telemetry, no account and no server behind this app. Measurements are stored on this device, and an export only happens when you start one and choose the destination yourself.</string>
+    <string name="onboarding_permissions_title">Permissions</string>
+    <string name="onboarding_permissions_optional">You can skip all of these. Each tool asks again when it needs one, and none of them collects anything beyond what it shows you.</string>
+    <string name="onboarding_permission_cellular">Cellular measurements</string>
+    <string name="onboarding_permission_wifi">Wi-Fi analysis</string>
+    <string name="onboarding_permission_notifications">Long-running measurements</string>
+    <string name="onboarding_grant">Allow</string>
+    <string name="onboarding_granted">Granted</string>
+    <string name="onboarding_open_settings">Open settings</string>
+    <string name="onboarding_start">Get started</string>
+    <!-- Widget -->
+    <string name="widget_description">Current network at a glance: connection, signal and IP address. Tap the values to refresh.</string>
+    <string name="widget_active_prefix">Aktiv:</string>
+    <string name="widget_transport_wifi">Wi-Fi</string>
+    <string name="widget_transport_cellular">Cellular</string>
+    <string name="widget_transport_offline">Offline</string>
+    <string name="widget_label_ssid">SSID</string>
+    <string name="widget_label_signal">Signal</string>
+    <string name="widget_label_channel">Channel</string>
+    <string name="widget_label_operator">Network</string>
+    <string name="widget_label_technology">Technology</string>
+    <string name="widget_label_ip">IP</string>
+    <string name="widget_needs_permission">needs permission</string>
+    <string name="widget_read_at">Read at %1$s — tap to refresh</string>
+</resources>

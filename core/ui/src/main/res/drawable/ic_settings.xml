@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Slider controls: reads as "settings" without borrowing a gear glyph. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#FF000000">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M3,6.25h18v1.5h-18zM3,16.25h18v1.5h-18z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M6,7 A3,3 0 1 0 12,7 A3,3 0 1 0 6,7 z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,17 A3,3 0 1 0 18,17 A3,3 0 1 0 12,17 z" />
+</vector>

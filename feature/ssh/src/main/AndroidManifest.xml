@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Declared here rather than only in :app so the module states its own
+         requirement: an SSH client without network access is not a degraded
+         feature, it is a non-functional one. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>

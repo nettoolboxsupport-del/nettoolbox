@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="value_unavailable">--</string>
+
+    <!-- Signal quality levels -->
+    <string name="signal_quality_excellent">Excellent</string>
+    <string name="signal_quality_good">Good</string>
+    <string name="signal_quality_fair">Fair</string>
+    <string name="signal_quality_poor">Poor</string>
+    <string name="signal_quality_bad">Bad</string>
+    <string name="signal_quality_unknown">No reading</string>
+
+    <!-- Result actions -->
+    <string name="action_copy">Copy</string>
+    <string name="action_share">Share</string>
+    <string name="action_export">Export</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_grant_permission">Grant permission</string>
+    <string name="action_open_settings">Open settings</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="share_chooser_title">Share result</string>
+
+    <!-- Generic states -->
+    <string name="state_loading">Measuring…</string>
+    <string name="state_empty_title">No results</string>
+    <string name="state_empty_description">Nothing was found. That can be a valid finding — check the parameters and run it again.</string>
+
+    <!-- Error titles -->
+    <string name="error_title_permission">Permission missing</string>
+    <string name="error_title_location_disabled">Location switched off</string>
+    <string name="error_title_no_network">No network</string>
+    <string name="error_title_host_unreachable">Host not reachable</string>
+    <string name="error_title_timeout">Timed out</string>
+    <string name="error_title_connection_refused">Connection refused</string>
+    <string name="error_title_port_in_use">Port already in use</string>
+    <string name="error_title_scan_throttled">Scan throttling active</string>
+    <string name="error_title_multicast">Multicast lock denied</string>
+    <string name="error_title_native">Native component unavailable</string>
+    <string name="error_title_unsupported">Not supported on this device</string>
+    <string name="error_title_invalid_input">Invalid input</string>
+    <string name="error_title_io">Read/write error</string>
+    <string name="error_title_auth_failed">Authentication failed</string>
+    <string name="error_title_host_key_unknown">Unknown host key</string>
+    <string name="error_title_host_key_changed">Host key changed</string>
+    <string name="error_title_host_key_rejected">Host key rejected</string>
+    <string name="error_title_unknown">Unexpected error</string>
+
+    <!-- Error hints: what the user can do about it -->
+    <string name="error_hint_permission">Grant the permission to run this measurement.</string>
+    <string name="error_hint_permission_permanent">The permission was permanently denied. Enable it in the system settings for this app.</string>
+    <string name="error_hint_location_disabled">Switch on location — Android reports cell identity and Wi-Fi scan results only while it is active.</string>
+    <string name="error_hint_no_network">Check Wi-Fi or mobile data.</string>
+    <string name="error_hint_host_unreachable">Check the host name or IP address and whether the target is on the same network.</string>
+    <string name="error_hint_timeout">The target did not answer in time. Increase the timeout or check for a firewall in between.</string>
+    <string name="error_hint_connection_refused">The port is closed or no service is listening there.</string>
+    <string name="error_hint_port_in_use">Pick a different port, or stop the service already bound to it. Ports below 1024 cannot be bound.</string>
+    <string name="error_hint_scan_throttled">Android limits Wi-Fi scans to 4 per 2 minutes. Disabling the throttle is only possible in the developer options.</string>
+    <string name="error_hint_scan_throttled_countdown">Android limits Wi-Fi scans to 4 per 2 minutes. Next scan possible in %1$d s.</string>
+    <string name="error_hint_multicast">mDNS and SSDP need a multicast lock. Check the Wi-Fi connection and try again.</string>
+    <string name="error_hint_native">The native component could not be loaded. Fall back to another method in the settings.</string>
+    <string name="error_hint_unsupported">This device or Android version does not provide the required interface.</string>
+    <string name="error_hint_invalid_input">Check the entered values.</string>
+    <string name="error_hint_io">Reading or writing failed. Check storage space and permissions.</string>
+    <string name="error_hint_auth_failed">Check username, password, or private key.</string>
+    <string name="error_hint_host_key_unknown">The host is not trusted yet. Verify the fingerprint before connecting.</string>
+    <string name="error_hint_host_key_changed">Possible man-in-the-middle attack or replaced server key. Verify the fingerprint.</string>
+    <string name="error_hint_host_key_rejected">Connection aborted because the host key was not trusted.</string>
+    <string name="error_hint_unknown">Cause unknown. The technical detail is shown below.</string>
+
+</resources>

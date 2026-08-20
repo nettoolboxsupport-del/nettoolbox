@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_rationale_cellular">Android liefert Cell Identity und Signalmetriken nur bei erteiltem genauen Standort. Die Messdaten bleiben auf dem Gerät.</string>
+    <string name="permission_rationale_wifi">WLAN-Scanergebnisse gelten unter Android als Standortdaten. Ohne genauen Standort liefert das System eine leere Liste.</string>
+    <string name="permission_rationale_notifications">Langzeitmessungen und der iperf3-Server laufen als Foreground Service, den Android nur mit Benachrichtigungsberechtigung anzeigt.</string>
+</resources>

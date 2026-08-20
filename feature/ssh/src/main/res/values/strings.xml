@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_ssh_title">SSH Terminal</string>
+    <string name="feature_ssh_subtitle">Secure shell client and VT100/xterm emulator</string>
+
+    <!-- Tabs & Sections -->
+    <string name="ssh_tab_connect">Connect</string>
+    <string name="ssh_tab_terminal">Terminal</string>
+    <string name="ssh_tab_hosts">Hosts</string>
+
+    <!-- Connection Form -->
+    <string name="ssh_host_label">Host / IP Address</string>
+    <string name="ssh_host_placeholder">192.168.1.1 or server.lan</string>
+    <string name="ssh_port_label">Port</string>
+    <string name="ssh_user_label">Username</string>
+    <string name="ssh_user_placeholder">root, admin, user…</string>
+    <string name="ssh_auth_type_label">Authentication</string>
+    <string name="ssh_auth_password">Password</string>
+    <string name="ssh_auth_key">Private Key</string>
+    <string name="ssh_password_label">Password</string>
+    <string name="ssh_key_pem_label">Private Key (OpenSSH / PEM)</string>
+    <string name="ssh_key_pem_placeholder">-----BEGIN OPENSSH PRIVATE KEY-----…</string>
+    <string name="ssh_passphrase_label">Key Passphrase (optional)</string>
+    <string name="ssh_save_profile_label">Save connection profile</string>
+    <string name="ssh_profile_name_label">Profile Name</string>
+    <string name="ssh_profile_name_placeholder">e.g. Core Switch, Edge Router</string>
+
+    <!-- Actions -->
+    <string name="ssh_action_connect">Connect</string>
+    <string name="ssh_action_disconnect">Disconnect</string>
+    <string name="ssh_action_clear">Clear Screen</string>
+    <string name="ssh_action_load_profile">Load</string>
+    <string name="ssh_action_delete_profile">Delete</string>
+    <string name="ssh_action_forget_host">Forget</string>
+
+    <!-- Statuses -->
+    <string name="ssh_status_idle">Ready to connect</string>
+    <string name="ssh_status_connecting">Connecting to %1$s:%2$d…</string>
+    <string name="ssh_status_authenticating">Authenticating…</string>
+    <string name="ssh_status_connected">Connected: %1$s</string>
+    <string name="ssh_status_disconnected">Session closed</string>
+
+    <!-- Host Key Verification Dialogs -->
+    <string name="ssh_dialog_unknown_title">Unknown Host Key</string>
+    <string name="ssh_dialog_unknown_message">Connecting to %1$s:%2$d for the first time. Please verify the fingerprint with the server administrator before trusting:</string>
+    <string name="ssh_dialog_key_type">Type: %1$s</string>
+    <string name="ssh_dialog_fingerprint">Fingerprint: %1$s</string>
+    <string name="ssh_dialog_trust_button">Trust &amp; Connect</string>
+    <string name="ssh_dialog_cancel_button">Cancel</string>
+
+    <string name="ssh_dialog_changed_title">SECURITY WARNING: Host Key Changed!</string>
+    <string name="ssh_dialog_changed_message">The host key sent by %1$s:%2$d DOES NOT MATCH the previously trusted key! This could indicate a Man-in-the-Middle attack or a reinstalled server.</string>
+    <string name="ssh_dialog_stored_fingerprint">Previously trusted:\n%1$s</string>
+    <string name="ssh_dialog_presented_fingerprint">Newly presented:\n%1$s</string>
+    <string name="ssh_dialog_accept_changed_button">Replace Key &amp; Connect (Dangerous)</string>
+    <string name="ssh_dialog_reject_changed_button">Abort (Recommended)</string>
+
+    <!-- Profiles & Known Hosts -->
+    <string name="ssh_profiles_title">Saved Profiles</string>
+    <string name="ssh_profiles_empty">No saved profiles yet. Save a connection in the Connect tab.</string>
+    <string name="ssh_known_hosts_title">Trusted Host Keys</string>
+    <string name="ssh_known_hosts_empty">No trusted hosts stored yet.</string>
+    <string name="ssh_known_host_added">Trusted since: %1$s</string>
+
+    <!-- Modifier Bar -->
+    <string name="ssh_mod_esc">ESC</string>
+    <string name="ssh_mod_tab">TAB</string>
+    <string name="ssh_mod_ctrl">CTRL</string>
+    <string name="ssh_mod_alt">ALT</string>
+    <string name="ssh_mod_fn">Fn</string>
+    <string name="ssh_mod_keys_title">Special Keys</string>
+</resources>

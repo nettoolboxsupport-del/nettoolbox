@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_cellular_title">Mobilfunk</string>
+
+    <string name="cellular_waiting_title">Warte auf das Modem</string>
+    <string name="cellular_waiting_description">Noch keine Serving Cell gemeldet. Auf manchen Geräten dauert der erste Messwert einige Sekunden.</string>
+    <string name="cellular_no_service">Kein Netz — das Modem meldet keine Verbindung.</string>
+    <string name="cellular_refresh">Jetzt aktualisieren</string>
+    <string name="cellular_rsrp_history">RSRP im Zeitverlauf</string>
+
+    <string name="cellular_technology">Technologie</string>
+    <string name="cellular_operator">Betreiber</string>
+    <string name="cellular_plmn">MCC-MNC</string>
+    <string name="cellular_band">Band</string>
+    <string name="cellular_arfcn">ARFCN</string>
+    <string name="cellular_cell_id">Cell ID</string>
+    <string name="cellular_pci">PCI</string>
+    <string name="cellular_tac">TAC/LAC</string>
+    <string name="cellular_bandwidth">Bandbreite</string>
+    <string name="cellular_timing_advance">Timing Advance</string>
+    <string name="cellular_timing_advance_value">%1$d · höchstens ca. %2$d m</string>
+    <string name="cellular_roaming">Roaming</string>
+    <string name="cellular_roaming_yes">ja</string>
+
+    <string name="cellular_neighbors">Nachbarzellen (%1$d)</string>
+    <string name="cellular_neighbors_empty">Das Modem meldet gerade keine Nachbarn. Viele Geräte tun das nur im Leerlauf.</string>
+    <string name="cellular_delta">%1$+d dB zur Serving Cell</string>
+
+    <!-- Drive-Test-Logging -->
+    <string name="logging_channel_name">Drive-Test-Aufzeichnung</string>
+    <string name="logging_channel_description">Wird angezeigt, solange eine Messfahrt aufzeichnet.</string>
+    <string name="logging_notification_title">Zeichnet auf: %1$s</string>
+    <string name="logging_notification_text">%1$d Messwerte</string>
+    <string name="logging_notification_stop">Stopp</string>
+    <string name="logging_default_session_name">Messfahrt</string>
+    <string name="logging_title">Drive-Test-Logging</string>
+    <string name="logging_start">Aufzeichnung starten</string>
+    <string name="logging_stop">Aufzeichnung beenden</string>
+    <string name="logging_session_name_label">Name der Sitzung</string>
+    <string name="logging_status">%1$d Messwerte · %2$d Handover</string>
+    <string name="logging_no_fix">Warte auf eine Position — bis dahin werden Messwerte ohne Koordinaten aufgezeichnet.</string>
+    <string name="logging_accuracy">Positionsgenauigkeit: %1$.0f m</string>
+    <string name="logging_background_hint">Für die Aufzeichnung bei ausgeschaltetem Display verlangt Android zusätzlich den Hintergrund-Standort. Erteile ihn, wenn danach gefragt wird.</string>
+
+    <string name="logging_allow_notifications">Zuerst Benachrichtigungen erlauben</string>
+
+    <!-- Sitzungen -->
+    <string name="sessions_open">Aufgezeichnete Sitzungen</string>
+    <string name="sessions_empty_title">Noch keine Sitzungen</string>
+    <string name="sessions_empty_description">Starte eine Aufzeichnung im Mobilfunk-Bereich. Jede Sitzung landet hier und lässt sich exportieren.</string>
+    <string name="sessions_running">zeichnet auf</string>
+    <string name="sessions_finished">beendet</string>
+    <string name="sessions_loading_statistics">Statistik wird berechnet…</string>
+    <string name="sessions_delete">Sitzung löschen</string>
+    <string name="sessions_show_on_map">Auf Karte anzeigen</string>
+    <string name="sessions_stat_samples">Messwerte</string>
+    <string name="sessions_stat_samples_value">%1$d · %2$d mit Position</string>
+    <string name="sessions_stat_handovers">Handover</string>
+    <string name="sessions_stat_rsrp">RSRP Median / schlechtester / bester</string>
+    <string name="sessions_stat_rsrp_value">%1$d / %2$d / %3$d dBm</string>
+    <string name="sessions_stat_duration">Dauer</string>
+    <string name="sessions_stat_rat">Technologien</string>
+
+    <string name="cellular_foreign_operator_note">Android meldet nur Zellen der eingelegten SIM. Für Messungen eines anderen Netzes brauchst du eine zweite SIM oder ein aktives eSIM-Profil — fremde Netze zu scannen erfordert eine Signatur-Berechtigung, die diese App nicht haben kann.</string>
+</resources>

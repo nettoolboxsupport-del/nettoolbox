@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_tools_title">Tools</string>
+    <string name="feature_tools_placeholder">Ping, traceroute, DNS, scanners, subnet calculator and WOL arrive in phase 2.</string>
+
+    <!-- Tool list -->
+    <string name="tool_ping">Ping</string>
+    <string name="tool_ping_description">Round-trip times, packet loss, live chart</string>
+    <string name="tool_subnet">Subnet calculator</string>
+    <string name="tool_subnet_description">IPv4 and IPv6, host range, splitting</string>
+    <string name="tool_wol">Wake-on-LAN</string>
+    <string name="tool_wol_description">Magic packet to a MAC address</string>
+    <string name="tool_dns">DNS lookup</string>
+    <string name="tool_dns_description">A to CAA, several resolvers in parallel, DoH and DoT</string>
+    <string name="tool_port_scan">Port scanner</string>
+    <string name="tool_ip_scan">IP scanner</string>
+    <string name="tool_http_tls">HTTP/TLS inspector</string>
+    <string name="tool_traceroute">Traceroute</string>
+    <string name="tool_traceroute_description">TTL ramp over ICMP, hop-by-hop RTT</string>
+    <string name="tool_upcoming">Coming in phase 2b</string>
+    <string name="tool_upcoming_native">Needs the native ICMP module from phase 5</string>
+
+    <!-- Traceroute -->
+    <string name="traceroute_target_label">Host or IP address</string>
+    <string name="traceroute_native_note">Uses the native ICMP module (phase 5). If it is unavailable on this device, use ping\'s automatic method detection instead.</string>
+    <string name="traceroute_destination">destination reached</string>
+    <string name="traceroute_unreachable">unreachable — stopped here</string>
+
+    <!-- Subnet calculator -->
+    <string name="subnet_input_label">Address with prefix or netmask</string>
+    <string name="subnet_hint">For example 192.168.1.10/24, 10.0.0.1 255.255.255.0 or 2001:db8::1/64</string>
+    <string name="subnet_invalid">Not a valid IPv4 or IPv6 address</string>
+    <string name="subnet_split_title">Split into smaller subnets</string>
+    <string name="subnet_row_address">Address</string>
+    <string name="subnet_row_network">Network</string>
+    <string name="subnet_row_netmask">Netmask</string>
+    <string name="subnet_row_wildcard">Wildcard</string>
+    <string name="subnet_row_broadcast">Broadcast</string>
+    <string name="subnet_row_host_range">Host range</string>
+    <string name="subnet_row_usable_hosts">Usable hosts</string>
+    <string name="subnet_row_total">Total addresses</string>
+    <string name="subnet_row_binary">Address (binary)</string>
+    <string name="subnet_row_mask_binary">Netmask (binary)</string>
+    <string name="subnet_row_first">First address</string>
+    <string name="subnet_row_last">Last address</string>
+
+    <!-- Ping -->
+    <string name="ping_target_label">Host or IP address</string>
+    <string name="ping_count_endless">Endless</string>
+    <string name="action_start">Start</string>
+    <string name="action_stop">Stop</string>
+    <string name="ping_transport_system">ICMP via the system ping binary</string>
+    <string name="ping_transport_icmp">ICMP via unprivileged datagram socket</string>
+    <string name="ping_transport_tcp">TCP connect timing — not ICMP. Measures the handshake to one port.</string>
+    <string name="ping_statistics">%1$d sent, %2$d received, %3$s%% loss, avg %4$s ms</string>
+
+    <string name="tool_port_scan_description">TCP connect, presets or custom ranges, optional banner</string>
+
+    <!-- Run history -->
+    <string name="history_title">History</string>
+    <string name="history_empty_title">No runs yet</string>
+    <string name="history_empty_description">Every run of this tool is recorded here and can be repeated.</string>
+    <string name="history_repeat">Repeat</string>
+    <string name="history_delete">Delete</string>
+    <string name="history_clear">Clear all</string>
+    <string name="history_success">succeeded</string>
+    <string name="history_failed">failed</string>
+
+    <!-- Port scanner -->
+    <string name="portscan_host_label">Host or IP address</string>
+    <string name="portscan_preset_quick">Quick</string>
+    <string name="portscan_preset_common">Common</string>
+    <string name="portscan_preset_custom">Custom</string>
+    <string name="portscan_ports_label">Ports</string>
+    <string name="portscan_ports_hint">Comma-separated, ranges allowed: 22,80,443,8000-8100</string>
+    <string name="portscan_banner">Read banner on connect</string>
+    <string name="portscan_progress">%1$d of %2$d checked · %3$d open</string>
+    <string name="scanner_disclaimer_title">Only scan networks you are authorised to scan</string>
+    <string name="scanner_disclaimer_text">A port scan opens real connections to the target and is visible in its logs. Run it only on networks and systems you own or have written permission to test. Unauthorised scanning can be a criminal offence.</string>
+    <string name="scanner_disclaimer_accept">I am authorised</string>
+    <string name="scanner_disclaimer_cancel">Cancel</string>
+
+    <!-- DNS -->
+    <string name="dns_name_label">Name to look up</string>
+    <string name="dns_lookup">Look up</string>
+    <string name="dns_no_answer">No answer</string>
+    <string name="dns_no_records">Answered, but with no records of this type</string>
+    <string name="dns_ttl">TTL %1$d s</string>
+    <string name="dns_private_active">Private DNS is active on this device (%1$s). The app queries the servers below directly.</string>
+
+    <!-- IP scanner -->
+    <string name="tool_ip_scan_description">Find hosts on the local subnet: TCP, mDNS, SSDP, NetBIOS</string>
+    <string name="ipscan_subnet_label">Subnet</string>
+    <string name="ipscan_subnet_hint">Prefilled from the active connection</string>
+    <string name="ipscan_subnet_invalid">Not a valid IPv4 subnet</string>
+    <string name="ipscan_progress">%1$d of %2$d addresses · %3$d hosts</string>
+    <string name="ipscan_open_ports">Open: %1$s</string>
+
+    <!-- HTTP/TLS inspector -->
+    <string name="tool_http_tls_description">Redirect chain, TLS version, certificate expiry</string>
+    <string name="http_url_label">URL</string>
+    <string name="http_url_hint">Without a scheme, HTTPS is assumed</string>
+    <string name="http_inspect">Inspect</string>
+    <string name="http_loop_detected">Redirect loop: a URL appeared twice.</string>
+    <string name="http_limit_reached">Redirect limit reached — the chain continues.</string>
+    <string name="http_total">%1$d steps · %2$d ms in total</string>
+    <string name="http_redirects_to">redirects to %1$s</string>
+    <string name="http_show_headers">Show %1$d headers</string>
+    <string name="http_hide_headers">Hide %1$d headers</string>
+    <string name="http_issuer">Issued by %1$s</string>
+    <string name="http_valid_until">Valid until %1$s · %2$d days</string>
+    <string name="http_expired">This certificate has expired.</string>
+    <string name="http_not_yet_valid">This certificate is not valid yet.</string>
+
+    <!-- Wake-on-LAN -->
+    <string name="wol_mac_label">MAC address</string>
+    <string name="wol_mac_invalid">Six bytes expected, e.g. AA:BB:CC:DD:EE:FF</string>
+    <string name="wol_broadcast_label">Broadcast address</string>
+    <string name="wol_broadcast_hint">Use the subnet broadcast (e.g. 192.168.1.255) when the target is behind a router.</string>
+    <string name="wol_port_label">Port</string>
+    <string name="wol_send">Send magic packet</string>
+    <string name="wol_sent">Packet sent. Wake-on-LAN is not acknowledged, so this does not confirm the device woke up.</string>
+    <string name="wol_recent">Recently used</string>
+</resources>

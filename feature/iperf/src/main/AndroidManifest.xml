@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+          Fully qualified on purpose: a relative name in a library manifest is
+          resolved against the consuming app's applicationId, not against this
+          module's namespace.
+        -->
+        <service
+            android:name="de.nettoolbox.feature.iperf.service.Iperf3ServerService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+    </application>
+
+</manifest>

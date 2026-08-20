@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_map_title">Karte</string>
+
+    <string name="map_layer_samples">Messpunkte</string>
+    <string name="map_layer_known_cells">Bekannte Standorte</string>
+    <string name="map_status">%1$d Messpunkte · %2$d bekannte Zellen</string>
+    <string name="map_downsampled">Angezeigt: %1$d von %2$d Punkten — für die Darstellung ausgedünnt, der Export enthält alles.</string>
+
+    <string name="map_import_csv">OpenCelliD-CSV importieren</string>
+    <string name="map_clear_imported">Importierte Zellen löschen</string>
+    <string name="map_importing">Importiere… %1$d Zellen</string>
+
+    <string name="map_attribution">Karte © OpenStreetMap-Mitwirkende · Zelldaten © OpenCelliD (CC-BY-SA)</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base activity theme. Everything visible is drawn by Compose; this only
+         provides the window background so there is no white flash before the
+         first frame. Parented on the platform theme to avoid a dependency on
+         com.google.android.material. -->
+    <style name="Theme.NetToolbox" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="Theme.NetToolbox.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/ic_launcher_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.NetToolbox</item>
+    </style>
+
+</resources>

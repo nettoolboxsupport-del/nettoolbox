@@ -1,0 +1,723 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "062fa637e849c0c3b544f322fec4fb45",
+    "entities": [
+      {
+        "tableName": "measurement_session",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `startedAt` INTEGER NOT NULL, `endedAt` INTEGER, `note` TEXT, `deviceModel` TEXT NOT NULL, `osVersion` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startedAt",
+            "columnName": "startedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endedAt",
+            "columnName": "endedAt",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "deviceModel",
+            "columnName": "deviceModel",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "osVersion",
+            "columnName": "osVersion",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "cell_sample",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sessionId` INTEGER NOT NULL, `ts` INTEGER NOT NULL, `lat` REAL, `lon` REAL, `accuracy` REAL, `speed` REAL, `subId` INTEGER NOT NULL, `rat` TEXT NOT NULL, `mcc` INTEGER, `mnc` INTEGER, `operatorName` TEXT, `cid` INTEGER, `pci` INTEGER, `tac` INTEGER, `arfcn` INTEGER, `band` INTEGER, `bandwidthKhz` INTEGER, `rsrp` INTEGER, `rsrq` INTEGER, `sinr` INTEGER, `rssi` INTEGER, `cqi` INTEGER, `timingAdvance` INTEGER, `isServing` INTEGER NOT NULL, `isRoaming` INTEGER NOT NULL, FOREIGN KEY(`sessionId`) REFERENCES `measurement_session`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ts",
+            "columnName": "ts",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lat",
+            "columnName": "lat",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "lon",
+            "columnName": "lon",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "speed",
+            "columnName": "speed",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "subId",
+            "columnName": "subId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rat",
+            "columnName": "rat",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mcc",
+            "columnName": "mcc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "mnc",
+            "columnName": "mnc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "operatorName",
+            "columnName": "operatorName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "cid",
+            "columnName": "cid",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "pci",
+            "columnName": "pci",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "tac",
+            "columnName": "tac",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "arfcn",
+            "columnName": "arfcn",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "band",
+            "columnName": "band",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "bandwidthKhz",
+            "columnName": "bandwidthKhz",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rsrp",
+            "columnName": "rsrp",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rsrq",
+            "columnName": "rsrq",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "sinr",
+            "columnName": "sinr",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rssi",
+            "columnName": "rssi",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "cqi",
+            "columnName": "cqi",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "timingAdvance",
+            "columnName": "timingAdvance",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "isServing",
+            "columnName": "isServing",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isRoaming",
+            "columnName": "isRoaming",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_cell_sample_sessionId",
+            "unique": false,
+            "columnNames": [
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_cell_sample_sessionId` ON `${TABLE_NAME}` (`sessionId`)"
+          },
+          {
+            "name": "index_cell_sample_ts",
+            "unique": false,
+            "columnNames": [
+              "ts"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_cell_sample_ts` ON `${TABLE_NAME}` (`ts`)"
+          },
+          {
+            "name": "index_cell_sample_mcc_mnc_cid",
+            "unique": false,
+            "columnNames": [
+              "mcc",
+              "mnc",
+              "cid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_cell_sample_mcc_mnc_cid` ON `${TABLE_NAME}` (`mcc`, `mnc`, `cid`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "measurement_session",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sessionId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "neighbor_sample",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cellSampleId` INTEGER NOT NULL, `rat` TEXT NOT NULL, `pci` INTEGER, `arfcn` INTEGER, `rsrp` INTEGER, `rsrq` INTEGER, `sinr` INTEGER, FOREIGN KEY(`cellSampleId`) REFERENCES `cell_sample`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cellSampleId",
+            "columnName": "cellSampleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rat",
+            "columnName": "rat",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pci",
+            "columnName": "pci",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "arfcn",
+            "columnName": "arfcn",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rsrp",
+            "columnName": "rsrp",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rsrq",
+            "columnName": "rsrq",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "sinr",
+            "columnName": "sinr",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_neighbor_sample_cellSampleId",
+            "unique": false,
+            "columnNames": [
+              "cellSampleId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_neighbor_sample_cellSampleId` ON `${TABLE_NAME}` (`cellSampleId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "cell_sample",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "cellSampleId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "known_cell",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mcc` INTEGER NOT NULL, `mnc` INTEGER NOT NULL, `rat` TEXT NOT NULL, `cid` INTEGER NOT NULL, `lat` REAL NOT NULL, `lon` REAL NOT NULL, `azimuth` INTEGER, `rangeMeters` INTEGER, `source` TEXT NOT NULL, `updatedAt` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mcc",
+            "columnName": "mcc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mnc",
+            "columnName": "mnc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rat",
+            "columnName": "rat",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cid",
+            "columnName": "cid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lat",
+            "columnName": "lat",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lon",
+            "columnName": "lon",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "azimuth",
+            "columnName": "azimuth",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rangeMeters",
+            "columnName": "rangeMeters",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_known_cell_mcc_mnc_cid",
+            "unique": true,
+            "columnNames": [
+              "mcc",
+              "mnc",
+              "cid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_known_cell_mcc_mnc_cid` ON `${TABLE_NAME}` (`mcc`, `mnc`, `cid`)"
+          },
+          {
+            "name": "index_known_cell_lat_lon",
+            "unique": false,
+            "columnNames": [
+              "lat",
+              "lon"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_known_cell_lat_lon` ON `${TABLE_NAME}` (`lat`, `lon`)"
+          }
+        ]
+      },
+      {
+        "tableName": "wifi_scan_sample",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sessionId` INTEGER NOT NULL, `ts` INTEGER NOT NULL, `bssid` TEXT NOT NULL, `ssid` TEXT, `rssi` INTEGER NOT NULL, `frequencyMhz` INTEGER NOT NULL, `channelWidth` INTEGER, `centerFreq0` INTEGER, `centerFreq1` INTEGER, `capabilities` TEXT, `standard` INTEGER, `lat` REAL, `lon` REAL, FOREIGN KEY(`sessionId`) REFERENCES `measurement_session`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ts",
+            "columnName": "ts",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bssid",
+            "columnName": "bssid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ssid",
+            "columnName": "ssid",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rssi",
+            "columnName": "rssi",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyMhz",
+            "columnName": "frequencyMhz",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "channelWidth",
+            "columnName": "channelWidth",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "centerFreq0",
+            "columnName": "centerFreq0",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "centerFreq1",
+            "columnName": "centerFreq1",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "capabilities",
+            "columnName": "capabilities",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "standard",
+            "columnName": "standard",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "lat",
+            "columnName": "lat",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "lon",
+            "columnName": "lon",
+            "affinity": "REAL"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_wifi_scan_sample_sessionId",
+            "unique": false,
+            "columnNames": [
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_wifi_scan_sample_sessionId` ON `${TABLE_NAME}` (`sessionId`)"
+          },
+          {
+            "name": "index_wifi_scan_sample_ts",
+            "unique": false,
+            "columnNames": [
+              "ts"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_wifi_scan_sample_ts` ON `${TABLE_NAME}` (`ts`)"
+          },
+          {
+            "name": "index_wifi_scan_sample_bssid",
+            "unique": false,
+            "columnNames": [
+              "bssid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_wifi_scan_sample_bssid` ON `${TABLE_NAME}` (`bssid`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "measurement_session",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sessionId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "tool_run",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `toolType` TEXT NOT NULL, `target` TEXT NOT NULL, `paramsJson` TEXT NOT NULL, `startedAt` INTEGER NOT NULL, `durationMs` INTEGER, `resultJson` TEXT, `success` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "toolType",
+            "columnName": "toolType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "target",
+            "columnName": "target",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paramsJson",
+            "columnName": "paramsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startedAt",
+            "columnName": "startedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "durationMs",
+            "columnName": "durationMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "resultJson",
+            "columnName": "resultJson",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "success",
+            "columnName": "success",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_tool_run_toolType",
+            "unique": false,
+            "columnNames": [
+              "toolType"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_tool_run_toolType` ON `${TABLE_NAME}` (`toolType`)"
+          },
+          {
+            "name": "index_tool_run_startedAt",
+            "unique": false,
+            "columnNames": [
+              "startedAt"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_tool_run_startedAt` ON `${TABLE_NAME}` (`startedAt`)"
+          }
+        ]
+      },
+      {
+        "tableName": "discovered_host",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `scanId` INTEGER NOT NULL, `ip` TEXT NOT NULL, `hostname` TEXT, `mac` TEXT, `vendor` TEXT, `openPortsJson` TEXT, `rttMs` REAL, FOREIGN KEY(`scanId`) REFERENCES `tool_run`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scanId",
+            "columnName": "scanId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ip",
+            "columnName": "ip",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hostname",
+            "columnName": "hostname",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "vendor",
+            "columnName": "vendor",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "openPortsJson",
+            "columnName": "openPortsJson",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rttMs",
+            "columnName": "rttMs",
+            "affinity": "REAL"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_discovered_host_scanId",
+            "unique": false,
+            "columnNames": [
+              "scanId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_discovered_host_scanId` ON `${TABLE_NAME}` (`scanId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "tool_run",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "scanId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '062fa637e849c0c3b544f322fec4fb45')"
+    ]
+  }
+}

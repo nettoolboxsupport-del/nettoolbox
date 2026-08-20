@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_cellular_title">Cellular</string>
+
+    <string name="cellular_waiting_title">Waiting for the modem</string>
+    <string name="cellular_waiting_description">No serving cell reported yet. On some devices the first reading takes a few seconds.</string>
+    <string name="cellular_no_service">No service — the modem reports no network.</string>
+    <string name="cellular_refresh">Request update now</string>
+    <string name="cellular_rsrp_history">RSRP over time</string>
+
+    <string name="cellular_technology">Technology</string>
+    <string name="cellular_operator">Operator</string>
+    <string name="cellular_plmn">MCC-MNC</string>
+    <string name="cellular_band">Band</string>
+    <string name="cellular_arfcn">ARFCN</string>
+    <string name="cellular_cell_id">Cell ID</string>
+    <string name="cellular_pci">PCI</string>
+    <string name="cellular_tac">TAC/LAC</string>
+    <string name="cellular_bandwidth">Bandwidth</string>
+    <string name="cellular_timing_advance">Timing advance</string>
+    <string name="cellular_timing_advance_value">%1$d · up to approx. %2$d m</string>
+    <string name="cellular_roaming">Roaming</string>
+    <string name="cellular_roaming_yes">yes</string>
+
+    <string name="cellular_neighbors">Neighbour cells (%1$d)</string>
+    <string name="cellular_neighbors_empty">The modem is not reporting any neighbours right now. Many devices only do so while idle.</string>
+    <string name="cellular_delta">%1$+d dB vs. serving cell</string>
+
+    <!-- Drive-test logging -->
+    <string name="logging_channel_name">Drive-test recording</string>
+    <string name="logging_channel_description">Shown while a measurement session is recording.</string>
+    <string name="logging_notification_title">Recording: %1$s</string>
+    <string name="logging_notification_text">%1$d samples</string>
+    <string name="logging_notification_stop">Stop</string>
+    <string name="logging_default_session_name">Drive test</string>
+    <string name="logging_title">Drive-test logging</string>
+    <string name="logging_start">Start recording</string>
+    <string name="logging_stop">Stop recording</string>
+    <string name="logging_session_name_label">Session name</string>
+    <string name="logging_status">%1$d samples · %2$d handovers</string>
+    <string name="logging_no_fix">Waiting for a position — samples are recorded without coordinates until then.</string>
+    <string name="logging_accuracy">Position accuracy: %1$.0f m</string>
+    <string name="logging_background_hint">For recording with the screen off, Android additionally requires background location. Grant it when prompted.</string>
+
+    <string name="logging_allow_notifications">Allow notifications first</string>
+
+    <!-- Sessions -->
+    <string name="sessions_open">Recorded sessions</string>
+    <string name="sessions_empty_title">No sessions yet</string>
+    <string name="sessions_empty_description">Start a recording on the cellular screen. Every session lands here and can be exported.</string>
+    <string name="sessions_running">recording</string>
+    <string name="sessions_finished">finished</string>
+    <string name="sessions_loading_statistics">Computing statistics…</string>
+    <string name="sessions_delete">Delete session</string>
+    <string name="sessions_show_on_map">Show on map</string>
+    <string name="sessions_stat_samples">Samples</string>
+    <string name="sessions_stat_samples_value">%1$d · %2$d with position</string>
+    <string name="sessions_stat_handovers">Handovers</string>
+    <string name="sessions_stat_rsrp">RSRP median / worst / best</string>
+    <string name="sessions_stat_rsrp_value">%1$d / %2$d / %3$d dBm</string>
+    <string name="sessions_stat_duration">Duration</string>
+    <string name="sessions_stat_rat">Technologies</string>
+
+    <string name="cellular_foreign_operator_note">Android only reports cells of the inserted SIM. Measuring another operator needs a second SIM or an active eSIM profile — scanning foreign networks requires a signature permission this app cannot hold.</string>
+</resources>

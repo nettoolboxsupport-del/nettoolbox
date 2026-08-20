@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_iperf_title">iperf3</string>
+    <string name="iperf3_subtitle">Durchsatzmessung gegen einen iperf3-Server</string>
+
+    <string name="action_start">Start</string>
+
+    <!-- Client -->
+    <string name="iperf3_mode_client">Client</string>
+    <string name="iperf3_host_label">Serveradresse</string>
+    <string name="iperf3_port_label">Port</string>
+    <string name="iperf3_reverse">Umgekehrt (Server sendet)</string>
+    <string name="iperf3_running">Messe… %1$d s</string>
+    <string name="iperf3_no_cancel_note">Ein laufender Test lässt sich nicht abbrechen: libiperf bietet dafür keine Möglichkeit. Deshalb stehen nur kurze Laufzeiten zur Wahl.</string>
+    <string name="iperf3_sent">Gesendet</string>
+    <string name="iperf3_received">Empfangen</string>
+    <string name="iperf3_retransmits">Retransmits</string>
+    <string name="iperf3_summary_unparsed">Die Zusammenfassungsfelder konnten nicht gelesen werden. Das Roh-JSON ist vollständig und liegt dem Export bei.</string>
+
+    <!-- Server -->
+    <string name="iperf3_mode_server">Server</string>
+    <string name="iperf3_server_port_label">Lauschender Port</string>
+    <string name="iperf3_server_port_hint">Ports unter 1024 kann eine App nicht binden. Standard ist 5201.</string>
+    <string name="iperf3_server_start">Server starten</string>
+    <string name="iperf3_server_stop">Server beenden</string>
+    <string name="iperf3_server_listening">Lauscht auf Port %1$d</string>
+    <string name="iperf3_server_waiting">Warte auf einen Client…</string>
+    <plurals name="iperf3_server_tests">
+        <item quantity="one">%1$d abgeschlossener Test</item>
+        <item quantity="other">%1$d abgeschlossene Tests</item>
+    </plurals>
+    <string name="iperf3_server_clear_results">Löschen</string>
+    <string name="iperf3_server_no_tests">Bisher ist kein Test gelaufen.</string>
+    <string name="iperf3_server_no_json">Der Test ist fertig, aber libiperf hat überhaupt kein JSON zurückgegeben.</string>
+    <string name="iperf3_server_addresses">Erreichbar unter: %1$s</string>
+    <string name="iperf3_server_stop_note">Das Beenden greift, sobald das aktuelle Warten endet — die App verbindet sich dafür kurz mit ihrem eigenen Port.</string>
+    <string name="iperf3_server_stopping">Wird beendet…</string>
+    <string name="iperf3_server_stop_timeout">libiperf ist auf die Stopp-Anforderung nicht zurückgekehrt. Die Anzeige ist wieder freigegeben, damit du weiterarbeiten kannst — der native Server hält seinen Port aber möglicherweise noch. Scheitert ein Neustart am Port, hilft nur ein Neustart der App.</string>
+    <string name="iperf3_server_stopping_note">Ein bereits laufender Test lässt sich nicht abschneiden — libiperf bietet dafür keine Möglichkeit, und ihn zu kappen würde dem Client ein kaputtes Ergebnis liefern. Der Server geht aus, sobald der aktuelle Test fertig ist; wie lange das dauert, bestimmt der Client.</string>
+
+    <string name="iperf3_server_channel_name">iperf3-Server</string>
+    <string name="iperf3_server_channel_description">Wird angezeigt, solange der iperf3-Server lauscht.</string>
+    <string name="iperf3_server_notification_title">iperf3-Server auf Port %1$d</string>
+    <plurals name="iperf3_server_notification_text">
+        <item quantity="one">%1$d abgeschlossener Test</item>
+        <item quantity="other">%1$d abgeschlossene Tests</item>
+    </plurals>
+    <string name="iperf3_server_notification_stop">Beenden</string>
+</resources>
