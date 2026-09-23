@@ -419,6 +419,7 @@ private fun FtpSection(viewModel: FileServerViewModel) {
 private fun SshSection(viewModel: FileServerViewModel) {
     val config by viewModel.config.collectAsStateWithLifecycle()
     val state by viewModel.serverState.collectAsStateWithLifecycle()
+    val fingerprint by viewModel.hostKeyFingerprint.collectAsStateWithLifecycle()
     val ssh = config.ssh
     val context = LocalContext.current
     var confirmRegenerate by remember { mutableStateOf(false) }
@@ -469,7 +470,7 @@ private fun SshSection(viewModel: FileServerViewModel) {
         modifier = Modifier.padding(top = 20.dp, bottom = 4.dp),
     )
     Text(
-        text = viewModel.hostKeyFingerprint(),
+        text = fingerprint,
         style = de.nettoolbox.core.ui.theme.MonospaceTextStyle,
     )
     Hint(stringResource(R.string.ssh_host_key_hint))

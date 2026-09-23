@@ -113,6 +113,7 @@ private val LOG_MESSAGES: Map<String, Int> = mapOf(
     "tftp.abort" to R.string.log_msg_tftp_abort,
     "tftp.rename" to R.string.log_msg_tftp_rename,
     "tftp.write" to R.string.log_msg_tftp_write,
+    "tftp.busy" to R.string.log_msg_tftp_busy,
 
     "ftp.connected" to R.string.log_msg_ftp_connected,
     "ftp.disconnected" to R.string.log_msg_ftp_disconnected,

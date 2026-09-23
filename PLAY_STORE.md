@@ -162,6 +162,7 @@ auf der Karte, DNS-Rückwärtsauflösung, ICMP-Sweep im IP-Scanner.
 | Store-Eintrag mit Texten und Grafiken | ✓ Standardsprache Englisch (en-US) |
 | Interner Test veröffentlicht | ✓ Versionscode 1, 21.08. 13:45 |
 | Interner Test aktualisiert | ✓ Versionscode 2 (1.1.0), 03.09. — Dateiserver, siehe PHASE8_NOTES.md |
+| Version 1.2.0 vorbereitet | Versionscode 3 — serielle Konsole, Review-Fixes (PHASE9_NOTES.md), Store-Texte und Datenschutzerklärung aktualisiert |
 
 ## Der Weg zur Veröffentlichung: 14 Tage Mindestfrist
 

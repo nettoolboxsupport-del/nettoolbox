@@ -249,3 +249,22 @@
 # -----------------------------------------------------------------------------
 -keep class org.slf4j.impl.** { *; }
 -dontwarn org.slf4j.**
+
+
+# -----------------------------------------------------------------------------
+# Debug logging is removed from release builds
+#
+# Log.d and Log.v calls are dropped by R8, Log.i/w/e stay. Added after a review
+# found the SSH terminal logging every keystroke and every line of remote
+# output at DEBUG - left over from the "cannot type" investigation, and shipped
+# in the release build. Those calls were deleted at the source; this rule is
+# the second line, so that the next leftover debug statement does not reach
+# users either.
+#
+# Warnings and errors are kept on purpose: they are what a user's bug report
+# contains, and none of them carries user data.
+# -----------------------------------------------------------------------------
+-assumenosideeffects class android.util.Log {
+    public static int v(...);
+    public static int d(...);
+}

@@ -13,6 +13,7 @@ import org.apache.sshd.common.io.nio2.Nio2ServiceFactoryFactory
 import org.apache.sshd.common.keyprovider.KeyPairProvider
 import org.apache.sshd.common.session.Session
 import org.apache.sshd.scp.common.ScpTransferEventListener
+import org.apache.sshd.scp.common.helpers.DefaultScpFileOpener
 import org.apache.sshd.scp.server.ScpCommandFactory
 import org.apache.sshd.server.ServerAuthenticationManager
 import org.apache.sshd.server.SshServer
@@ -23,8 +24,11 @@ import org.apache.sshd.sftp.server.Handle
 import org.apache.sshd.sftp.server.SftpEventListener
 import org.apache.sshd.sftp.server.SftpSubsystemFactory
 import java.io.IOException
+import java.io.OutputStream
 import java.net.InetAddress
+import java.nio.file.OpenOption
 import java.nio.file.Path
+import java.nio.file.attribute.PosixFilePermission
 import java.nio.file.StandardOpenOption
 import java.security.MessageDigest
 import java.security.PublicKey
@@ -113,6 +117,10 @@ internal class SshServerHost(
 
             commandFactory = if (ssh.enableScp) {
                 ScpCommandFactory().apply {
+                    // The write check has to sit in the opener, not in the
+                    // transfer listener: SSHD opens - and truncates - the
+                    // target file before it announces the transfer.
+                    setScpFileOpener(ReadOnlyAwareScpFileOpener(accountsByName, storage, log))
                     addEventListener(ScpLogger(accountsByName, log))
                 }
             } else {
@@ -325,6 +333,61 @@ private class SftpGuard(
             MESSAGE_READ_ONLY,
             storage.relativeOf(path.toFile()),
         )
+        throw IOException("write access denied")
+    }
+}
+
+/**
+ * Refuses every SCP upload for an account without write permission - before
+ * anything on disk is touched.
+ *
+ * This exists because the obvious place was the wrong one. The first version
+ * refused in [ScpLogger.startFileEvent], which is where SFTP's equivalent check
+ * works. But the SCP receive path, read out of ScpHelper.receiveStream in the
+ * SSHD 2.18.0 bytecode, calls resolveTargetStream - which opens the file with
+ * TRUNCATE_EXISTING - *before* it raises startFileEvent. A read-only account
+ * could therefore cut any existing file in its share to zero bytes; the refusal
+ * came after the damage. SFTP was not affected: there the opening event is
+ * raised before the channel is opened, also verified in the bytecode.
+ *
+ * Two entry points are guarded:
+ * - [resolveIncomingReceiveLocation] runs first on every receive, so a
+ *   read-only account is turned away before even a directory is created for
+ *   `scp -r`;
+ * - [openWrite] is the call that actually opens the file, kept as the check
+ *   that holds even if a future SSHD version takes another route to it.
+ */
+private class ReadOnlyAwareScpFileOpener(
+    private val accounts: Map<String, ServerAccount>,
+    private val storage: ShareStorage,
+    private val log: TransferLog,
+) : DefaultScpFileOpener() {
+
+    override fun resolveIncomingReceiveLocation(
+        session: Session,
+        path: Path,
+        recursive: Boolean,
+        shouldBeDir: Boolean,
+        preserve: Boolean,
+    ): Path {
+        requireWrite(session, path)
+        return super.resolveIncomingReceiveLocation(session, path, recursive, shouldBeDir, preserve)
+    }
+
+    override fun openWrite(
+        session: Session,
+        file: Path,
+        size: Long,
+        permissions: Set<PosixFilePermission>,
+        vararg options: OpenOption,
+    ): OutputStream {
+        requireWrite(session, file)
+        return super.openWrite(session, file, size, permissions, *options)
+    }
+
+    private fun requireWrite(session: Session, path: Path) {
+        if (accounts[session.username]?.canWrite == true) return
+        log.warn(Protocol.SCP, session.describe(), MESSAGE_READ_ONLY, storage.relativeOf(path.toFile()))
         throw IOException("write access denied")
     }
 }

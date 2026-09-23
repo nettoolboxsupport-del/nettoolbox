@@ -14,23 +14,27 @@ sachlich und ohne Superlative.
 
 ## Kurzbeschreibung (max. 80 Zeichen)
 
-**Deutsch** (71 Zeichen):
+**Deutsch** (69 Zeichen):
 
 ```
-Netzwerkdiagnose für Techniker: Mobilfunk, WLAN, Ping, DNS, iperf3, SSH
+Netzwerkdiagnose, SSH, serielle Konsole und Dateiserver für Techniker
 ```
 
-**Englisch** (75 Zeichen):
+**Englisch** (76 Zeichen):
 
 ```
-Network diagnostics: cellular, Wi-Fi, ping, DNS, iperf3 and an SSH terminal
+Network diagnostics, SSH and serial console, and a TFTP/FTP/SFTP file server
 ```
 
 ---
 
 ## Vollbeschreibung (max. 4000 Zeichen)
 
-**Deutsch:**
+Stand 1.2.0: mit serieller Konsole und Dateiserver. "Kein Server hinter
+dieser App" wurde zu "kein Server des Entwicklers" präzisiert, seit die App
+selbst einer sein kann.
+
+**Deutsch** (3304 Zeichen):
 
 ```
 NetToolbox ist ein Diagnosewerkzeug für Netzwerktechniker — für den Außendienst, das Rechenzentrum und überall dort, wo man wissen muss, was das Netz gerade tatsächlich tut.
@@ -50,11 +54,17 @@ Echtes iperf3, im Quelltext eingebunden — kein Nachbau. Als Client gegen einen
 SSH
 Ein vollwertiges Terminal mit VT100- und xterm-Emulation. Die Prüfung des Hostschlüssels lässt sich nicht abschalten, und ein geänderter Schlüssel wird deutlich von einem unbekannten unterschieden. Verbindungsprofile, Zusatztasten für Strg, Alt, Tab und die Pfeile.
 
+SERIELLE KONSOLE
+Dasselbe Terminal über ein USB-Konsolenkabel oder einen USB-Seriell-Adapter: FTDI, Prolific PL2303, Silicon Labs CP210x, WCH CH34x und CDC/ACM-Geräte, darunter der USB-Konsolenport an Netzwerkgeräten. Baudraten-Vorlagen, BREAK für die Wiederherstellung beim Booten, zeilenweises Einfügen mit Pause, damit das Gerät mitkommt, und ein optionaler Mitschnitt.
+
+DATEISERVER
+Ein Ordner auf dem Gerät, bereitgestellt über TFTP, FTP/FTPS, SFTP und klassisches SCP — um Firmware und Konfigurationen ohne Laptop auf Switches und Router zu bringen. Konten mit Lese- oder Schreibrecht, ein Live-Protokoll aller Verbindungen und Übertragungen, ein Dateiexplorer mit MD5-, SHA-1- und SHA-256-Prüfsummen und eine automatische Abschaltung, damit eine Freigabe nie versehentlich weiterläuft.
+
 KARTE
 Messfahrten und importierte Zellstandorte auf einer Karte, die auf OpenStreetMap aufsetzt.
 
 DEINE DATEN BLEIBEN BEI DIR
-Keine Telemetrie. Kein Konto. Kein Server hinter dieser App. Messwerte liegen auf dem Gerät, und ein Export findet nur statt, wenn du ihn auslöst und das Ziel selbst wählst. Es sind keine Analyse- oder Werbebibliotheken eingebaut.
+Keine Telemetrie. Kein Konto. Kein Server des Entwicklers hinter dieser App. Messwerte liegen auf dem Gerät, und Daten verlassen es nur, wenn du einen Export auslöst oder selbst den Dateiserver startest. Es sind keine Analyse- oder Werbebibliotheken eingebaut.
 
 QUELLOFFEN
 Der vollständige Quelltext steht unter der Apache-Lizenz 2.0 öffentlich zur Verfügung. Was die App tut, lässt sich nachlesen statt glauben.
@@ -65,7 +75,7 @@ Portscanner und IP-Scanner bauen echte Verbindungen zu den geprüften Zielen auf
 Kartendaten © OpenStreetMap-Mitwirkende. Zelldaten © OpenCelliD (CC-BY-SA).
 ```
 
-**Englisch:**
+**Englisch** (3065 Zeichen):
 
 ```
 NetToolbox is a diagnostic toolkit for network engineers — for field work, for the data centre, and for anywhere you need to know what the network is actually doing right now.
@@ -85,11 +95,17 @@ Real iperf3, vendored from source — not a reimplementation. As a client agains
 SSH
 A full terminal with VT100 and xterm emulation. Host key verification cannot be switched off, and a changed key is clearly distinguished from an unknown one. Connection profiles, plus extra keys for Ctrl, Alt, Tab and the arrows.
 
+SERIAL CONSOLE
+The same terminal over a USB console cable or a USB-to-serial adapter: FTDI, Prolific PL2303, Silicon Labs CP210x, WCH CH34x and CDC/ACM devices, including the USB console port on network equipment. Baud presets, BREAK for boot-time recovery, line-by-line paste with a pause so the device keeps up, and an optional session log.
+
+FILE SERVER
+A folder on the device, served over TFTP, FTP/FTPS, SFTP and legacy SCP — for getting firmware and configurations onto switches and routers without a laptop. Accounts with read-only or read-write access, a live log of every connection and transfer, a file explorer with MD5, SHA-1 and SHA-256 checksums, and an automatic stop so a share is never left running by accident.
+
 MAP
 Drive tests and imported cell positions on a map built on OpenStreetMap.
 
 YOUR DATA STAYS WITH YOU
-No telemetry. No account. No server behind this app. Measurements are stored on the device, and an export only happens when you start one and choose the destination yourself. There are no analytics or advertising libraries.
+No telemetry. No account. No developer server behind this app. Measurements are stored on the device, and data only leaves it when you start an export or run the file server yourself. There are no analytics or advertising libraries.
 
 OPEN SOURCE
 The complete source is published under the Apache License 2.0. What the app does can be read rather than believed.

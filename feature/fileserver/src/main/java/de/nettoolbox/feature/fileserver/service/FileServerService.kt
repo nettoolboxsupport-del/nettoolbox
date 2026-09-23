@@ -82,11 +82,29 @@ class FileServerService : Service() {
     private var autoStopJob: Job? = null
     private var wakeLock: PowerManager.WakeLock? = null
 
+    /**
+     * Set in onStartCommand on the main thread, cleared in stopServers - which
+     * also runs from the auto-stop and failure paths on the I/O dispatcher.
+     */
+    @Volatile
+    private var inForeground = false
+
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
-            ACTION_START -> scope.launch { startServers() }
+            ACTION_START -> {
+                // Synchronously, before any other work. The service was started
+                // with startForegroundService(), and Android crashes the app if
+                // such a service stops - or takes more than a few seconds -
+                // without having called startForeground(). The first version
+                // called it only after reading the configuration, and the
+                // "Wi-Fi only, but no Wi-Fi" path stopped the service before
+                // that point: pressing Start away from Wi-Fi killed the app.
+                enterForeground()
+                scope.launch { startServers() }
+            }
+
             else -> stopServers()
         }
         // A listening file server the user did not ask for is not something the
@@ -104,24 +122,15 @@ class FileServerService : Service() {
             // for Wi-Fi only, and quietly widening that would expose the share
             // on the mobile interface - which on a modern network carries a
             // publicly routable IPv6 address.
+            // stopServers() rather than a bare stopSelf(): the service is in the
+            // foreground by now and has to leave it, and reset() here would
+            // wipe the failure the UI is about to show - so it is set after.
+            stopServers()
             controller.update {
                 it.copy(isStarting = false, fatalFailure = ProtocolFailure.NO_BIND_ADDRESS)
             }
-            stopSelf()
             return
         }
-
-        createChannel()
-        ServiceCompat.startForeground(
-            this,
-            NOTIFICATION_ID,
-            buildNotification(config, running = 0),
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
-            } else {
-                0
-            },
-        )
 
         val tftpStatus = startTftp(config, bindAddress)
         val ftpStatus = startFtp(config, bindAddress)
@@ -129,6 +138,10 @@ class FileServerService : Service() {
 
         val running = listOf(tftpStatus, ftpStatus, sshStatus).count { it.running }
         if (running == 0) {
+            // Stop first, report second. stopServers() resets the shared
+            // state, and the earlier order - report, then stop - wiped the
+            // reason straight away: a taken port showed as nothing at all.
+            stopServers()
             controller.update {
                 it.copy(
                     isStarting = false,
@@ -139,7 +152,6 @@ class FileServerService : Service() {
                         ?: ProtocolFailure.OTHER,
                 )
             }
-            stopServers()
             return
         }
 
@@ -166,6 +178,28 @@ class FileServerService : Service() {
 
         updateNotification(config, running)
         scheduleAutoStop(config)
+    }
+
+    /**
+     * Puts the service in the foreground with a provisional notification.
+     *
+     * Only once per run: a second Start while the servers are up must not
+     * replace the real notification with the provisional one.
+     */
+    private fun enterForeground() {
+        if (inForeground) return
+        inForeground = true
+        createChannel()
+        ServiceCompat.startForeground(
+            this,
+            NOTIFICATION_ID,
+            buildNotification(FileServerConfig(), running = 0),
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
+            } else {
+                0
+            },
+        )
     }
 
     private fun startTftp(config: FileServerConfig, bindAddress: InetAddress?): ProtocolStatus {
@@ -265,6 +299,7 @@ class FileServerService : Service() {
 
         releaseWakeLock()
         controller.reset()
+        inForeground = false
         ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
         stopSelf()
     }

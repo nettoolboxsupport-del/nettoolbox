@@ -125,3 +125,52 @@ USB console port, BREAK, and the plug-in prompt.
 What cannot be checked without hardware: whether a given adapter works. That
 needs a USB-serial adapter or a device with a USB console port, and an OTG
 adapter for a phone with only USB-C.
+
+---
+
+## Review before 1.2.0
+
+A pass over the whole code base before the next Play release. Automated scans
+across all modules, then a close read of phases 8 and 9, which had been written
+without a compiler and never reviewed.
+
+### Fixed
+
+1. **Read-only SCP accounts could truncate files.** SSHD's SCP receive path
+   opens the target with TRUNCATE_EXISTING *before* it raises the transfer
+   event the read-only check hung off - read out of `ScpHelper.receiveStream`
+   in the 2.18.0 bytecode. The check now sits in a `ScpFileOpener`, at
+   `resolveIncomingReceiveLocation` and `openWrite`. SFTP was verified in the
+   same way and was not affected: its opening event comes before the open.
+2. **SSH terminal logged keystrokes and remote output** at DEBUG, in release
+   builds - left over from the phase 6 "cannot type" investigation. Removed at
+   the source, and R8 now strips `Log.d` and `Log.v` from release builds.
+3. **Starting the file server away from Wi-Fi crashed the app.** With
+   "Wi-Fi only" and no Wi-Fi the service stopped before `startForeground()`,
+   which Android punishes with a crash. The service now enters the foreground
+   synchronously in `onStartCommand`.
+4. **A failed start showed no reason.** When no protocol could start, the
+   failure was written and then wiped by the reset in `stopServers()`. Order
+   reversed.
+5. **Import took the provider's display name as a path.** A name like
+   `../../datastore/file_server.json` would have been written outside the
+   share, over the app's own files. Only the last segment is used now,
+   cleaned like a name typed into the rename dialog.
+6. **SSH host key fingerprint:** read from disk on the main thread at every
+   redraw, and still showing the old key after "generate a new key". Cached in
+   `HostKeyStore`, exposed as state.
+7. **TFTP had no limit on concurrent transfers.** Unauthenticated, each one
+   holding a thread; a flood could stall every tool in the app. Capped at 16.
+8. Smaller: `runCatching` swallowing cancellation in the widget; a log line
+   printing a literal `$count`; the explorer's refresh button announcing
+   itself to TalkBack as "OK".
+
+### Looked at and deliberately left
+
+- **Technical labels hardcoded in UI code** - TCP, UDP, mDNS, key names such as
+  Home or F1. These are the same in both languages.
+- **SSH feeds libvterm from an I/O thread**, unlike the serial console. It has
+  not shown a problem, and its session code is the one part of the app that
+  took a long investigation to get right.
+- The baseline profile predates both new features. Worth regenerating, but not
+  a correctness issue.

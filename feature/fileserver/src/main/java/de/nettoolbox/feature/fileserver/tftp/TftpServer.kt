@@ -114,6 +114,22 @@ internal class TftpServer(
                 continue
             }
 
+            // Each transfer holds a thread in blocking socket calls for as long
+            // as it runs, and TFTP has no authentication: without a ceiling,
+            // anyone on the network can queue requests until the whole I/O
+            // pool is taken - stalling every other tool in the app with it.
+            // Over the limit a client gets a clear refusal it can retry on.
+            val active = synchronized(transfers) {
+                transfers.removeAll { it.isCompleted }
+                transfers.size
+            }
+            if (active >= MAX_CONCURRENT_TRANSFERS) {
+                val busy = TftpCodec.error(TftpError.NOT_DEFINED, "server busy")
+                runCatching { bound.send(DatagramPacket(busy, busy.size, client)) }
+                log.warn(Protocol.TFTP, client.describe(), MESSAGE_BUSY, request.filename)
+                continue
+            }
+
             val job = scope.launch {
                 runCatching { handle(request, client, config) }
                     .onFailure { failure ->
@@ -641,5 +657,12 @@ internal class TftpServer(
         const val MESSAGE_CLIENT_ABORT = "tftp.abort"
         const val MESSAGE_RENAME_FAILED = "tftp.rename"
         const val MESSAGE_WRITE_FAILED = "tftp.write"
+        const val MESSAGE_BUSY = "tftp.busy"
+
+        /**
+         * Well above what a technician does - a handful of devices pulling the
+         * same image - and well below the 64 threads of the I/O dispatcher.
+         */
+        const val MAX_CONCURRENT_TRANSFERS = 16
     }
 }

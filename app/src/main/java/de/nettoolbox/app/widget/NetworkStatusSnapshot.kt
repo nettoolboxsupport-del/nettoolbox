@@ -14,6 +14,7 @@ import dagger.hilt.components.SingletonComponent
 import de.nettoolbox.app.R
 import de.nettoolbox.feature.cellular.data.TelephonyRepository
 import de.nettoolbox.feature.wifi.data.WifiConnectionRepository
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.Serializable
@@ -125,12 +126,21 @@ object NetworkStatusReader {
             // The repository is a callback flow, so the first emission is the
             // snapshot. Bounded, because a widget update runs on a short budget
             // and a modem that never answers must not consume it.
-            runCatching {
+            //
+            // try/catch rather than runCatching: runCatching also catches the
+            // CancellationException that ends this coroutine when the widget
+            // update is abandoned, and would carry on as if nothing happened.
+            try {
                 withTimeoutOrNull(CELLULAR_TIMEOUT_MILLIS) {
                     val repo = deps.telephonyRepository()
                     repo.observe(repo.defaultSubscriptionId()).first()
                 }
-            }.getOrNull()
+            } catch (cancelled: CancellationException) {
+                throw cancelled
+            } catch (failure: Exception) {
+                Log.w("NetToolboxWidget", "cellular read failed", failure)
+                null
+            }
         }
         val serving = cellular?.serving
 

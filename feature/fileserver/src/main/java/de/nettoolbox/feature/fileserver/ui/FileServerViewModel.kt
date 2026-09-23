@@ -4,7 +4,9 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import de.nettoolbox.core.common.di.IoDispatcher
 import de.nettoolbox.core.permissions.PermissionCoordinator
+import kotlinx.coroutines.CoroutineDispatcher
 import de.nettoolbox.feature.fileserver.domain.ChecksumAlgorithm
 import de.nettoolbox.feature.fileserver.domain.CopyProgress
 import de.nettoolbox.feature.fileserver.domain.FileEntry
@@ -70,7 +72,21 @@ class FileServerViewModel @Inject constructor(
     val transferLog: TransferLog,
     /** Exposed so the screen can gate the service on notification permission. */
     val permissionCoordinator: PermissionCoordinator,
+    @param:IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : ViewModel() {
+
+    /**
+     * The SSH host key fingerprint, as state.
+     *
+     * It used to be read by a plain function call during composition. That
+     * read both key files from disk on the main thread at every redraw, and -
+     * worse - after "generate a new key" the screen kept showing the old
+     * fingerprint, since nothing told Compose it had changed. Anyone comparing
+     * it with their client's warning would have compared against the wrong
+     * key.
+     */
+    private val _hostKeyFingerprint = MutableStateFlow("")
+    val hostKeyFingerprint: StateFlow<String> = _hostKeyFingerprint.asStateFlow()
 
     private val _explorer = MutableStateFlow(ExplorerState())
     val explorer: StateFlow<ExplorerState> = _explorer.asStateFlow()
@@ -97,6 +113,7 @@ class FileServerViewModel @Inject constructor(
 
     init {
         refresh()
+        viewModelScope.launch(ioDispatcher) { _hostKeyFingerprint.value = hostKeys.fingerprint() }
     }
 
     // --- navigation ---------------------------------------------------------
@@ -335,12 +352,13 @@ class FileServerViewModel @Inject constructor(
         viewModelScope.launch { configRepository.removeAuthorizedKey(line) }
     }
 
-    fun hostKeyFingerprint(): String = hostKeys.fingerprint()
-
     fun hostKeyLine(): String = hostKeys.publicKeyLine()
 
     fun regenerateHostKey() {
-        viewModelScope.launch { hostKeys.regenerate() }
+        viewModelScope.launch(ioDispatcher) {
+            hostKeys.regenerate()
+            _hostKeyFingerprint.value = hostKeys.fingerprint()
+        }
     }
 
     fun clearLog() = transferLog.clear()

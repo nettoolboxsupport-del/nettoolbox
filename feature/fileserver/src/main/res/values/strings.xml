@@ -42,6 +42,7 @@
     <string name="explorer_export">Save to…</string>
     <string name="explorer_checksum">Checksum</string>
     <string name="explorer_sort">Sort</string>
+    <string name="explorer_refresh">Refresh</string>
     <string name="explorer_sort_name">Name</string>
     <string name="explorer_sort_size">Size</string>
     <string name="explorer_sort_modified">Changed</string>
@@ -204,6 +205,7 @@
     <string name="log_msg_tftp_abort">Client aborted the transfer</string>
     <string name="log_msg_tftp_rename">Upload finished but could not be saved under its name</string>
     <string name="log_msg_tftp_write">Writing failed</string>
+    <string name="log_msg_tftp_busy">Refused: too many transfers at once</string>
 
     <string name="log_msg_ftp_connected">Connected</string>
     <string name="log_msg_ftp_disconnected">Disconnected</string>

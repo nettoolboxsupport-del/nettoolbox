@@ -203,7 +203,9 @@ class FileOperations @Inject constructor(
         withContext(dispatcher) {
             val target = storage.resolve(targetDirectory) ?: return@withContext failed(FileOpError.OutsideRoot)
             if (!target.isDirectory) return@withContext failed(FileOpError.NotFound)
-            val name = displayNameOf(context.contentResolver, uri) ?: DEFAULT_IMPORT_NAME
+            // The cleaned name contains no path separator, so the destination
+            // is a direct child of a directory resolve() already accepted.
+            val name = safeImportName(displayNameOf(context.contentResolver, uri))
             val destination = uniqueDestination(target, name)
             try {
                 context.contentResolver.openInputStream(uri).use { input ->
@@ -347,6 +349,32 @@ class FileOperations @Inject constructor(
      * without a way back, and a share that a device is actively pulling from is
      * the worst possible place for it.
      */
+    /**
+     * The display name a document provider reports, made safe to use as a file
+     * name.
+     *
+     * That name is chosen by whichever app provides the document, and nothing
+     * obliges it to be a plain name. Taken as-is, "../../datastore/x.json"
+     * would have been written outside the share, over the app's own files -
+     * including the file server's account list. Only the last path segment is
+     * kept, the characters the rename dialog refuses are replaced, and names
+     * that are only dots fall back to a default.
+     */
+    private fun safeImportName(reported: String?): String {
+        val lastSegment = reported
+            ?.substringAfterLast('/')
+            ?.substringAfterLast('\\')
+            ?.map { if (it in ILLEGAL_NAME_CHARACTERS || it.code < 0x20) '_' else it }
+            ?.joinToString("")
+            ?.trim()
+            ?.take(MAX_NAME_LENGTH)
+        return if (lastSegment.isNullOrEmpty() || lastSegment.all { it == '.' }) {
+            DEFAULT_IMPORT_NAME
+        } else {
+            lastSegment
+        }
+    }
+
     private fun uniqueDestination(directory: File, name: String): File {
         val candidate = File(directory, name)
         if (!candidate.exists()) return candidate

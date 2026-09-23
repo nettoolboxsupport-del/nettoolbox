@@ -55,9 +55,16 @@ class HostKeyStore @Inject constructor(
     private val privateFile: File get() = File(directory, PRIVATE_FILE_NAME)
     private val publicFile: File get() = File(directory, PUBLIC_FILE_NAME)
 
+    /**
+     * Held in memory after the first read. Without it every call read both
+     * key files from disk - and the fingerprint is asked for whenever the
+     * servers screen redraws.
+     */
+    private var cached: KeyPair? = null
+
     /** The key pair, generating and storing one on first use. */
     @Synchronized
-    fun keyPair(): KeyPair = load() ?: generate()
+    fun keyPair(): KeyPair = cached ?: (load() ?: generate()).also { cached = it }
 
     /**
      * The OpenSSH SHA-256 fingerprint, in the exact form ssh(1) prints.
@@ -92,7 +99,7 @@ class HostKeyStore @Inject constructor(
     fun regenerate(): KeyPair {
         privateFile.delete()
         publicFile.delete()
-        return generate()
+        return generate().also { cached = it }
     }
 
     private fun load(): KeyPair? {

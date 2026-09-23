@@ -288,7 +288,10 @@ class SshViewModel @Inject constructor(
                         break
                     }
                     if (bytesRead > 0) {
-                        Log.d("NetToolboxSSH", "session.input read $bytesRead bytes: ${String(buffer, 0, minOf(bytesRead, 80))}")
+                        // No logging of what arrives. It was logged during the
+                        // "cannot type" investigation and stayed in: a remote
+                        // shell's output - file contents, configs, whatever
+                        // `cat` printed - written to Logcat in release builds.
                         VtermBridge.write(ptr, buffer, bytesRead)
                         _redrawTrigger.value++
                     }
@@ -323,7 +326,8 @@ class SshViewModel @Inject constructor(
         if (_ctrlActive.value) modifier = modifier or VtermModifier.CTRL
         if (_altActive.value) modifier = modifier or VtermModifier.ALT
 
-        Log.d("NetToolboxSSH", "sendChar: '$char' (code=${char.code}, mod=$modifier)")
+        // Keystrokes are never logged: this is where a sudo password or an
+        // enable secret is typed, one character at a time.
         VtermBridge.keyUnichar(ptr, char.code, modifier)
         flushOutput(session, ptr)
 
@@ -341,7 +345,6 @@ class SshViewModel @Inject constructor(
         if (_ctrlActive.value) modifier = modifier or VtermModifier.CTRL
         if (_altActive.value) modifier = modifier or VtermModifier.ALT
 
-        Log.d("NetToolboxSSH", "sendKey: $key (mod=$modifier)")
         VtermBridge.keyKey(ptr, key, modifier)
         flushOutput(session, ptr)
 
@@ -364,13 +367,9 @@ class SshViewModel @Inject constructor(
         if (count <= 0) return
 
         val bytesToSend = outBuf.copyOf(count)
-        Log.d(
-            "NetToolboxSSH",
-            "flushOutput: sending $count bytes: ${bytesToSend.joinToString(" ") { "%02X".format(it) }}",
-        )
         viewModelScope.launch(ioDispatcher) {
             if (!session.write(bytesToSend)) {
-                Log.w("NetToolboxSSH", "flushOutput: channel gone, ${'$'}count bytes dropped")
+                Log.w("NetToolboxSSH", "flushOutput: channel gone, $count bytes dropped")
                 withContext(kotlinx.coroutines.NonCancellable) {
                     if (activeSession === session) activeSession = null
                     if (_connectionState.value is SshConnectionState.Connected) {

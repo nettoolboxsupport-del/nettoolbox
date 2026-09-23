@@ -133,7 +133,7 @@ internal fun ExplorerTab(viewModel: FileServerViewModel) {
             IconButton(onClick = viewModel::refresh) {
                 Icon(
                     painter = painterResource(NetToolboxIcons.Refresh),
-                    contentDescription = stringResource(R.string.action_ok),
+                    contentDescription = stringResource(R.string.explorer_refresh),
                 )
             }
         }

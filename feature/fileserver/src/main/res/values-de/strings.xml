@@ -42,6 +42,7 @@
     <string name="explorer_export">Speichern unter…</string>
     <string name="explorer_checksum">Prüfsumme</string>
     <string name="explorer_sort">Sortieren</string>
+    <string name="explorer_refresh">Aktualisieren</string>
     <string name="explorer_sort_name">Name</string>
     <string name="explorer_sort_size">Größe</string>
     <string name="explorer_sort_modified">Geändert</string>
@@ -202,6 +203,7 @@
     <string name="log_msg_tftp_abort">Client hat die Übertragung abgebrochen</string>
     <string name="log_msg_tftp_rename">Upload beendet, konnte aber nicht unter seinem Namen abgelegt werden</string>
     <string name="log_msg_tftp_write">Schreiben fehlgeschlagen</string>
+    <string name="log_msg_tftp_busy">Abgelehnt: zu viele gleichzeitige Übertragungen</string>
 
     <string name="log_msg_ftp_connected">Verbunden</string>
     <string name="log_msg_ftp_disconnected">Getrennt</string>
