@@ -25,6 +25,7 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -44,8 +45,15 @@ import de.nettoolbox.vterm.VtermKey
  * Compose has no "terminal" input type, and the soft keyboard only talks to
  * something that holds focus and accepts text. The screen therefore carries a
  * one-pixel, almost transparent [BasicTextField] that takes the focus. Every
- * character typed into it is forwarded and the field is emptied again at once,
- * so it never holds any text and autocorrect has nothing to work on.
+ * character typed into it is forwarded and the field is reset at once, so it
+ * never holds more than a single placeholder character.
+ *
+ * That placeholder is what makes Backspace work. An earlier version emptied the
+ * field completely, and the soft keyboard's Backspace then asked an empty field
+ * to delete the character before the cursor: nothing changed, nothing was
+ * reported, and the key did nothing. Found on the first hardware test, at an
+ * Aruba CX console. With one character always present, a deletion shows up as
+ * the text getting shorter and is sent as Backspace.
  *
  * Hardware keys - Enter, arrows, Escape, from a Bluetooth or USB keyboard - do
  * not produce text at all and are caught separately through [onKeyEvent].
@@ -72,7 +80,7 @@ fun TerminalPane(
 ) {
     val focusRequester = remember { FocusRequester() }
     val keyboardController = LocalSoftwareKeyboardController.current
-    var rawInputText by remember { mutableStateOf(TextFieldValue("")) }
+    var rawInputText by remember { mutableStateOf(emptyInput()) }
 
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
@@ -98,12 +106,27 @@ fun TerminalPane(
                 value = rawInputText,
                 onValueChange = { newVal ->
                     val text = newVal.text
-                    if (text.isNotEmpty()) {
-                        for (c in text) {
+                    if (text.length < PLACEHOLDER.length) {
+                        // The placeholder was deleted: that is a Backspace.
+                        // Holding the key down arrives as repeated deletions,
+                        // each handled here in turn.
+                        onKey(VtermKey.BACKSPACE)
+                    } else {
+                        // Whatever follows the placeholder was typed. If the
+                        // keyboard replaced the placeholder instead of typing
+                        // after it, the whole text is new input.
+                        val typed = if (text.startsWith(PLACEHOLDER)) {
+                            text.substring(PLACEHOLDER.length)
+                        } else {
+                            text
+                        }
+                        for (c in typed) {
                             if (c == '\n' || c == '\r') onKey(VtermKey.ENTER) else onChar(c)
                         }
-                        rawInputText = TextFieldValue("")
                     }
+                    // Always back to exactly one placeholder with the cursor
+                    // behind it, so the next Backspace has something to delete.
+                    rawInputText = emptyInput()
                 },
                 modifier = Modifier
                     .size(1.dp)
@@ -149,3 +172,15 @@ fun TerminalPane(
         )
     }
 }
+
+/**
+ * What the input field holds between keystrokes.
+ *
+ * A zero-width space rather than an ordinary one: a keyboard that looks at the
+ * text before the cursor - for auto-capitalisation or word suggestions - sees
+ * nothing that ends a word or a sentence, and so has no reason to capitalise
+ * the next letter or insert a space of its own.
+ */
+private const val PLACEHOLDER = "\u200B"
+
+private fun emptyInput() = TextFieldValue(PLACEHOLDER, selection = TextRange(PLACEHOLDER.length))
