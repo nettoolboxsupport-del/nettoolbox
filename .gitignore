@@ -16,3 +16,6 @@ keystore.properties
 # Build output redirected to a file for review
 build-log.txt
 release-log.txt
+
+# JVM crash reports (hs_err_pid<pid>.log), written into the working directory
+hs_err_pid*.log
