@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  USB devices for which Android offers to open NetToolbox when they are plugged
+  in. Accepting that offer also grants the app permission for the device, so the
+  console can connect without asking a second time.
+
+  This list only drives that offer. Detection inside the app does not depend on
+  it: the serial driver library also recognises CDC/ACM devices by their
+  interface class, so an adapter missing here still appears in the console's
+  device list - it just does not trigger the prompt on plug-in.
+
+  Vendor and product IDs are taken from the usb-serial-for-android example
+  project's device filter, plus Cisco's console port, which is listed in the
+  linux-usb.org USB ID repository as 05a6:0009 "Console".
+-->
+<resources>
+    <!-- 0x0403 FTDI: FT232R, FT2232H, FT4232H, FT232H, FT230X/FT231X/FT234XD -->
+    <usb-device vendor-id="1027" product-id="24577" />
+    <usb-device vendor-id="1027" product-id="24592" />
+    <usb-device vendor-id="1027" product-id="24593" />
+    <usb-device vendor-id="1027" product-id="24596" />
+    <usb-device vendor-id="1027" product-id="24597" />
+
+    <!-- 0x10C4 Silicon Labs: CP210x single port, CP2105, CP2108 -->
+    <usb-device vendor-id="4292" product-id="60000" />
+    <usb-device vendor-id="4292" product-id="60016" />
+    <usb-device vendor-id="4292" product-id="60017" />
+
+    <!-- 0x067B Prolific: PL2303HX/HXD/TA and the PL2303G family -->
+    <usb-device vendor-id="1659" product-id="8963" />
+    <usb-device vendor-id="1659" product-id="9123" />
+    <usb-device vendor-id="1659" product-id="9139" />
+    <usb-device vendor-id="1659" product-id="9155" />
+    <usb-device vendor-id="1659" product-id="9171" />
+    <usb-device vendor-id="1659" product-id="9187" />
+    <usb-device vendor-id="1659" product-id="9203" />
+
+    <!-- 0x1A86 WCH (Qinheng): CH341A, CH340, CH9102F -->
+    <usb-device vendor-id="6790" product-id="21795" />
+    <usb-device vendor-id="6790" product-id="29987" />
+    <usb-device vendor-id="6790" product-id="21972" />
+
+    <!-- 0x05A6 Cisco Systems: USB console port (05a6:0009) -->
+    <usb-device vendor-id="1446" product-id="9" />
+</resources>

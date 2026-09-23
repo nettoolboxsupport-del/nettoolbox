@@ -5,10 +5,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import de.nettoolbox.feature.cellular.navigation.cellularScreen
+import de.nettoolbox.feature.fileserver.navigation.fileServerScreen
+import de.nettoolbox.feature.fileserver.navigation.navigateToFileServer
 import de.nettoolbox.feature.iperf.navigation.iperfScreen
 import de.nettoolbox.feature.iperf.navigation.navigateToIperf
 import de.nettoolbox.feature.map.navigation.mapScreen
 import de.nettoolbox.feature.map.navigation.navigateToMap
+import de.nettoolbox.feature.serial.navigation.navigateToSerial
+import de.nettoolbox.feature.serial.navigation.serialScreen
 import de.nettoolbox.feature.ssh.navigation.navigateToSsh
 import de.nettoolbox.feature.ssh.navigation.sshScreen
 import de.nettoolbox.feature.tools.navigation.toolsScreen
@@ -31,6 +35,8 @@ fun NetToolboxNavHost(
             onOpenIperf = { navController.navigateToIperf() },
             onOpenMap = { navController.navigateToMap() },
             onOpenSsh = { navController.navigateToSsh() },
+            onOpenFileServer = { navController.navigateToFileServer() },
+            onOpenSerial = { navController.navigateToSerial() },
             onOpenSettings = { navController.navigate(SettingsRoute) },
         )
         settingsScreen(onOpenAbout = { navController.navigate(AboutRoute) })
@@ -49,5 +55,7 @@ fun NetToolboxNavHost(
         iperfScreen()
         mapScreen()
         sshScreen()
+        fileServerScreen()
+        serialScreen()
     }
 }

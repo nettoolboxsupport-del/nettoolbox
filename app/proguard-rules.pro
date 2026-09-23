@@ -167,3 +167,85 @@
 -dontwarn okio.**
 -dontwarn org.conscrypt.**
 -dontwarn org.openjsse.**
+
+
+# -----------------------------------------------------------------------------
+# Apache MINA SSHD (SFTP + SCP server)
+#
+# Three separate problems, each with its own rule.
+#
+# 1. Algorithm registration. SSHD resolves ciphers, MACs, key exchanges and
+#    signatures through enum constants whose names are matched against the
+#    strings on the wire (BuiltinCiphers, BuiltinMacs, BuiltinSignatures,
+#    BuiltinDHFactories). Obfuscating those enums leaves a server that
+#    negotiates nothing and disconnects with no usable message.
+#
+# 2. ServiceLoader. DefaultIoServiceFactoryFactory discovers the I/O backend
+#    that way. This app sets Nio2ServiceFactoryFactory explicitly to avoid the
+#    lookup entirely, but the class is then referenced only from that one line
+#    and its supertype hierarchy has to survive.
+#
+# 3. Optional dependencies. sshd-common compiles against Bouncy Castle's PGP
+#    and PKIX artifacts, the EdDSA library, tomcat-apr and JMX, all declared
+#    optional in its POM and none of them present here.
+# -----------------------------------------------------------------------------
+-keep enum org.apache.sshd.common.cipher.BuiltinCiphers { *; }
+-keep enum org.apache.sshd.common.mac.BuiltinMacs { *; }
+-keep enum org.apache.sshd.common.signature.BuiltinSignatures { *; }
+-keep enum org.apache.sshd.common.kex.BuiltinDHFactories { *; }
+-keep enum org.apache.sshd.common.compression.BuiltinCompressions { *; }
+-keep class org.apache.sshd.common.io.nio2.** { *; }
+-keep class org.apache.sshd.common.io.IoServiceFactoryFactory { *; }
+-keep class * implements org.apache.sshd.common.io.IoServiceFactoryFactory { *; }
+
+# The SFTP subsystem and the SCP command factory are instantiated by name in
+# places R8 cannot follow, and their listener interfaces are implemented here.
+-keep class org.apache.sshd.sftp.server.** { *; }
+-keep class org.apache.sshd.scp.server.** { *; }
+
+-dontwarn org.apache.sshd.**
+-dontwarn org.bouncycastle.openpgp.**
+-dontwarn org.bouncycastle.cert.**
+-dontwarn org.bouncycastle.openssl.**
+-dontwarn org.bouncycastle.pkcs.**
+-dontwarn net.i2p.crypto.eddsa.**
+-dontwarn org.apache.tomcat.jni.**
+-dontwarn javax.management.**
+-dontwarn java.rmi.**
+-dontwarn javax.security.auth.login.**
+
+
+# -----------------------------------------------------------------------------
+# Apache FtpServer and MINA
+#
+# FtpServer instantiates its FTP command handlers reflectively: each command is
+# a class under org.apache.ftpserver.command.impl looked up by the command name
+# from the wire. Obfuscated, the server accepts a connection and then rejects
+# every command as unknown.
+#
+# Spring is an optional dependency used only by the XML configuration this app
+# does not use, and jcl-over-slf4j likewise.
+# -----------------------------------------------------------------------------
+-keep class org.apache.ftpserver.command.impl.** { *; }
+-keep class org.apache.ftpserver.ftplet.** { *; }
+-keep class * implements org.apache.ftpserver.ftplet.Ftplet { *; }
+-keep class * implements org.apache.ftpserver.ftplet.UserManager { *; }
+-keep class * implements org.apache.ftpserver.ssl.SslConfiguration { *; }
+
+-dontwarn org.apache.ftpserver.**
+-dontwarn org.apache.mina.**
+-dontwarn org.springframework.**
+-dontwarn org.apache.commons.logging.**
+
+
+# -----------------------------------------------------------------------------
+# SLF4J binding
+#
+# LoggerFactory links against org.slf4j.impl.StaticLoggerBinder by name at
+# compile time, so R8 keeps it on its own - but MarkerFactory and MDC find
+# their binders the same way, and nothing in this app references those two
+# directly. Without the rule they are removed and every start logs a warning
+# about a missing binding.
+# -----------------------------------------------------------------------------
+-keep class org.slf4j.impl.** { *; }
+-dontwarn org.slf4j.**

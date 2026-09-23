@@ -150,6 +150,61 @@ iperf3-Client-Optionen (parallele Streams, bidirektional, Live-Diagramm),
 Wi-Fi-Heatmap, OUI-Herstellerauflösung, OpenCelliD-Online-API, Sektor-Keulen
 auf der Karte, DNS-Rückwärtsauflösung, ICMP-Sweep im IP-Scanner.
 
+## Stand: interner Test läuft (21.08.2026)
+
+| Schritt | Stand |
+|---|---|
+| Upload-Schlüssel erzeugt und gesichert | ✓ CN=Robin Fodor, gültig bis 2054 |
+| Quelltext öffentlich | ✓ github.com/nettoolboxsupport-del/nettoolbox |
+| Datenschutzerklärung erreichbar | ✓ nettoolboxsupport-del.github.io/nettoolbox/PRIVACY |
+| Play-Console-Konto | ✓ |
+| App-Inhalte (alle Deklarationen) | ✓ |
+| Store-Eintrag mit Texten und Grafiken | ✓ Standardsprache Englisch (en-US) |
+| Interner Test veröffentlicht | ✓ Versionscode 1, 21.08. 13:45 |
+| Interner Test aktualisiert | ✓ Versionscode 2 (1.1.0), 03.09. — Dateiserver, siehe PHASE8_NOTES.md |
+
+## Der Weg zur Veröffentlichung: 14 Tage Mindestfrist
+
+**Persönliche Entwicklerkonten, die nach dem 13.11.2023 angelegt wurden,
+dürfen nicht direkt in Produktion veröffentlichen.** Google verlangt vorher:
+
+- einen **geschlossenen** Test — der interne zählt dafür **nicht**
+- mit **mindestens 12 Testern**
+- die **14 Tage ununterbrochen** angemeldet sind
+- danach Antrag auf Produktionszugriff, Prüfung in rund sieben Tagen
+
+Steigt ein Tester zwischendurch aus, beginnt seine Frist von vorn.
+
+Das ist der Grund, warum der interne Test zuerst kam: Er ist sofort verfügbar
+und zeigt, ob das Bundle überhaupt angenommen wird — aber er bringt einen
+keinen Tag näher an die Veröffentlichung. **Zwölf Tester zusammenzubekommen ist
+die eigentliche Hürde**, nicht die Technik.
+
+### Was nach der Installation zu prüfen ist
+
+Drei Pfade, an denen die R8-Keep-Regeln hängen. Lokal bereits bestätigt, aber
+das von Play **neu signierte und aufgeteilte** Bundle ist eine andere Datei:
+
+1. Nativer Ping → `IcmpNative`
+2. iperf3-Client → `Iperf3Native`
+3. SSH-Verbindung, einmal Enter → `VtermNative`, jschs Algorithmen, Bouncy Castle
+
+### Bekannte Eigenheit
+
+Der Opt-in-Link eines frisch veröffentlichten internen Tests liefert oft
+stundenlang eine 404-Seite, bis Google die Store-Seite angelegt hat. Kein
+Fehler. Vorher prüfen: Ist die Testerliste dem Track **zugewiesen**, und ist der
+Browser mit genau der eingetragenen Adresse angemeldet?
+
+## Noch offen im Code
+
+
+Nichts, was einer Veröffentlichung im Weg steht. Die verbleibenden Punkte sind
+Ausbau, kein Mangel — aufgelistet in den jeweiligen Phasennotizen:
+iperf3-Client-Optionen (parallele Streams, bidirektional, Live-Diagramm),
+Wi-Fi-Heatmap, OUI-Herstellerauflösung, OpenCelliD-Online-API, Sektor-Keulen
+auf der Karte, DNS-Rückwärtsauflösung, ICMP-Sweep im IP-Scanner.
+
 ## Der eigentliche Engpass
 
 Alles Technische ist fertig. Was fehlt, sind ausschließlich Schritte, die ein

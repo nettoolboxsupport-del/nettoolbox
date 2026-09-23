@@ -1,4 +1,4 @@
-package de.nettoolbox.feature.ssh.ui
+package de.nettoolbox.core.terminal
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -29,7 +29,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.nettoolbox.feature.ssh.R
 import de.nettoolbox.vterm.VtermKey
 import de.nettoolbox.vterm.VtermModifier
 
@@ -65,13 +64,13 @@ fun ModifierBar(
         ) {
             // ESC
             ToolbarKeyButton(
-                label = stringResource(R.string.ssh_mod_esc),
+                label = stringResource(R.string.terminal_mod_esc),
                 onClick = { onSendKey(VtermKey.ESCAPE) },
             )
 
             // TAB
             ToolbarKeyButton(
-                label = stringResource(R.string.ssh_mod_tab),
+                label = stringResource(R.string.terminal_mod_tab),
                 onClick = { onSendKey(VtermKey.TAB) },
             )
 
@@ -89,14 +88,14 @@ fun ModifierBar(
 
             // CTRL (Latching toggle)
             ToolbarToggleButton(
-                label = stringResource(R.string.ssh_mod_ctrl),
+                label = stringResource(R.string.terminal_mod_ctrl),
                 active = ctrlActive,
                 onClick = onToggleCtrl,
             )
 
             // ALT (Latching toggle)
             ToolbarToggleButton(
-                label = stringResource(R.string.ssh_mod_alt),
+                label = stringResource(R.string.terminal_mod_alt),
                 active = altActive,
                 onClick = onToggleAlt,
             )
@@ -118,7 +117,7 @@ fun ModifierBar(
             // Fn Dropdown menu
             Box {
                 ToolbarKeyButton(
-                    label = stringResource(R.string.ssh_mod_fn),
+                    label = stringResource(R.string.terminal_mod_fn),
                     onClick = { showFnMenu = true },
                 )
                 DropdownMenu(

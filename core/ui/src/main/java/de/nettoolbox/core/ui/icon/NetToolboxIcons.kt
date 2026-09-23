@@ -49,4 +49,12 @@ object NetToolboxIcons {
     @DrawableRes val Play: Int = R.drawable.ic_play
 
     @DrawableRes val Terminal: Int = R.drawable.ic_terminal
+
+    @DrawableRes val Folder: Int = R.drawable.ic_folder
+
+    @DrawableRes val File: Int = R.drawable.ic_file
+
+    @DrawableRes val Server: Int = R.drawable.ic_server
+
+    @DrawableRes val Serial: Int = R.drawable.ic_serial
 }

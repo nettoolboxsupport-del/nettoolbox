@@ -71,6 +71,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import de.nettoolbox.core.terminal.TerminalPane
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.nettoolbox.core.ui.component.EmptyState
@@ -379,14 +380,6 @@ private fun TerminalTabContent(
     val altActive by viewModel.altActive.collectAsStateWithLifecycle()
     val redrawTrigger by viewModel.redrawTrigger.collectAsStateWithLifecycle()
 
-    val focusRequester = remember { FocusRequester() }
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var rawInputText by remember { mutableStateOf(TextFieldValue("")) }
-
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-    }
-
     // imePadding is what keeps the cursor line visible. Without it the soft
     // keyboard is drawn OVER the terminal, hiding the bottom rows - which are
     // exactly the ones being typed on. With it the column shrinks, the canvas
@@ -451,105 +444,21 @@ private fun TerminalTabContent(
             }
         }
 
-        // Terminal screen area
-        Box(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth(),
-        ) {
-            TerminalCanvas(
-                vtermPtr = viewModel.terminalPtr,
-                redrawTrigger = redrawTrigger,
-                onResize = { rows, cols -> viewModel.onResize(rows, cols) },
-                onTap = {
-                    focusRequester.requestFocus()
-                    keyboardController?.show()
-                },
-            )
-
-            // Transparent IME and hardware key input receiver overlay
-            BasicTextField(
-                value = rawInputText,
-                onValueChange = { newVal ->
-                    val text = newVal.text
-                    if (text.isNotEmpty()) {
-                        for (c in text) {
-                            if (c == '\n' || c == '\r') {
-                                viewModel.sendKey(VtermKey.ENTER)
-                            } else {
-                                viewModel.sendChar(c)
-                            }
-                        }
-                        rawInputText = TextFieldValue("")
-                    }
-                },
-                modifier = Modifier
-                    .size(1.dp)
-                    .alpha(0.01f)
-                    .focusRequester(focusRequester)
-                    .onKeyEvent { event ->
-                        if (event.type == KeyEventType.KeyDown) {
-                            when (event.key) {
-                                Key.Enter -> {
-                                    viewModel.sendKey(VtermKey.ENTER)
-                                    true
-                                }
-                                Key.Backspace -> {
-                                    viewModel.sendKey(VtermKey.BACKSPACE)
-                                    true
-                                }
-                                Key.Tab -> {
-                                    viewModel.sendKey(VtermKey.TAB)
-                                    true
-                                }
-                                Key.Escape -> {
-                                    viewModel.sendKey(VtermKey.ESCAPE)
-                                    true
-                                }
-                                Key.DirectionUp -> {
-                                    viewModel.sendKey(VtermKey.UP)
-                                    true
-                                }
-                                Key.DirectionDown -> {
-                                    viewModel.sendKey(VtermKey.DOWN)
-                                    true
-                                }
-                                Key.DirectionLeft -> {
-                                    viewModel.sendKey(VtermKey.LEFT)
-                                    true
-                                }
-                                Key.DirectionRight -> {
-                                    viewModel.sendKey(VtermKey.RIGHT)
-                                    true
-                                }
-                                else -> false
-                            }
-                        } else {
-                            false
-                        }
-                    },
-                textStyle = TextStyle(color = androidx.compose.ui.graphics.Color.Transparent),
-                cursorBrush = SolidColor(androidx.compose.ui.graphics.Color.Transparent),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Ascii,
-                    imeAction = ImeAction.Send,
-                ),
-                keyboardActions = KeyboardActions(
-                    onSend = { viewModel.sendKey(VtermKey.ENTER) },
-                    onDone = { viewModel.sendKey(VtermKey.ENTER) },
-                    onGo = { viewModel.sendKey(VtermKey.ENTER) },
-                ),
-            )
-        }
-
-        // Auxiliary Modifier bar
-        ModifierBar(
+        // Screen, keyboard capture and extra-key bar, shared with the serial
+        // console through :core:terminal.
+        TerminalPane(
+            vtermPtr = viewModel.terminalPtr,
+            redrawTrigger = redrawTrigger,
             ctrlActive = ctrlActive,
             altActive = altActive,
             onToggleCtrl = { viewModel.toggleCtrl() },
             onToggleAlt = { viewModel.toggleAlt() },
-            onSendKey = { key -> viewModel.sendKey(key) },
-            onSendChar = { char -> viewModel.sendChar(char) },
+            onChar = { char -> viewModel.sendChar(char) },
+            onKey = { key -> viewModel.sendKey(key) },
+            onResize = { rows, cols -> viewModel.onResize(rows, cols) },
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth(),
         )
     }
 }

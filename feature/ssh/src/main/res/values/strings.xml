@@ -63,10 +63,5 @@
     <string name="ssh_known_host_added">Trusted since: %1$s</string>
 
     <!-- Modifier Bar -->
-    <string name="ssh_mod_esc">ESC</string>
-    <string name="ssh_mod_tab">TAB</string>
-    <string name="ssh_mod_ctrl">CTRL</string>
-    <string name="ssh_mod_alt">ALT</string>
-    <string name="ssh_mod_fn">Fn</string>
     <string name="ssh_mod_keys_title">Special Keys</string>
 </resources>

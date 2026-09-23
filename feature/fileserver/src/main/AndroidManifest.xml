@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+          Fully qualified on purpose: a relative name in a library manifest is
+          resolved against the consuming app's applicationId, not against this
+          module's namespace.
+
+          Type "dataSync" rather than a more specific one: three listening
+          sockets moving files is precisely what that type describes, and the
+          service is only ever started by the user pressing start.
+        -->
+        <service
+            android:name="de.nettoolbox.feature.fileserver.service.FileServerService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+    </application>
+
+</manifest>

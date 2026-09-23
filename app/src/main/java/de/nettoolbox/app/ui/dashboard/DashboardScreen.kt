@@ -31,8 +31,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.nettoolbox.app.R
 import de.nettoolbox.core.ui.icon.NetToolboxIcons
 import de.nettoolbox.feature.cellular.R as CellularR
+import de.nettoolbox.feature.fileserver.R as FileServerR
 import de.nettoolbox.feature.iperf.R as IperfR
 import de.nettoolbox.feature.map.R as MapR
+import de.nettoolbox.feature.serial.R as SerialR
 import de.nettoolbox.feature.ssh.R as SshR
 import de.nettoolbox.feature.tools.R as ToolsR
 import de.nettoolbox.feature.wifi.R as WifiR
@@ -56,6 +58,8 @@ fun DashboardScreen(
     onOpenIperf: () -> Unit,
     onOpenMap: () -> Unit,
     onOpenSsh: () -> Unit,
+    onOpenFileServer: () -> Unit,
+    onOpenSerial: () -> Unit,
     onOpenSettings: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: DashboardViewModel = hiltViewModel(),
@@ -67,7 +71,13 @@ fun DashboardScreen(
         QuickAccessTile(ToolsR.string.feature_tools_title, NetToolboxIcons.Tools, onOpenTools),
         QuickAccessTile(IperfR.string.feature_iperf_title, NetToolboxIcons.Speed, onOpenIperf),
         QuickAccessTile(SshR.string.feature_ssh_title, NetToolboxIcons.Terminal, onOpenSsh),
+        QuickAccessTile(SerialR.string.feature_serial_title, NetToolboxIcons.Serial, onOpenSerial),
         QuickAccessTile(MapR.string.feature_map_title, NetToolboxIcons.Map, onOpenMap),
+        QuickAccessTile(
+            FileServerR.string.feature_fileserver_title,
+            NetToolboxIcons.Server,
+            onOpenFileServer,
+        ),
     )
 
     Column(

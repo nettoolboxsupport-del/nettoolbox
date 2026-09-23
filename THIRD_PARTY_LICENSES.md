@@ -75,6 +75,58 @@ This file exists because a licence mistake is not something a test catches.
   publication under `bcprov-jdk18on` could not be confirmed, so the verified
   version was pinned rather than the newest-looking one.
 
+### Apache MINA SSHD
+
+- **Artifacts:** `org.apache.sshd:sshd-core`, `sshd-sftp`, `sshd-scp` 2.18.0
+- **Licence:** **Apache 2.0** - verified by reading `META-INF/LICENSE` inside
+  `sshd-core-2.18.0.jar` and the `<licenses>` block of the inherited
+  `org.apache:apache:37` parent POM.
+- **Used for:** the SFTP subsystem and the legacy SCP command of the file
+  server
+- **Notes:** `sshd-scp` is not redundant beside `sshd-sftp`. OpenSSH 9 and
+  later implement the `scp` command over SFTP, but Cisco IOS and comparable
+  network gear still speak the original SCP protocol - and that gear is the
+  audience for the feature. The optional dependencies declared in its POM
+  (Bouncy Castle PGP and PKIX, the EdDSA library, tomcat-apr) are deliberately
+  not pulled in; see the `-dontwarn` rules in `app/proguard-rules.pro`.
+
+### Apache FtpServer and Apache MINA
+
+- **Artifacts:** `org.apache.ftpserver:ftpserver-core` 1.2.1, which pulls
+  `org.apache.mina:mina-core`
+- **Licence:** **Apache 2.0** - verified by reading `META-INF/LICENSE` inside
+  both jars and the `<licenses>` block of `ftpserver-parent-1.2.1.pom`.
+- **Used for:** the FTP and FTPS server
+- **Notes:** the optional Spring dependency is not used; this app configures
+  the server programmatically rather than through FtpServer's XML
+  configuration.
+
+### SLF4J
+
+- **Artifact:** `org.slf4j:slf4j-api` 1.7.36
+- **Licence:** **MIT** - verified by reading the `<licenses>` block of
+  `slf4j-parent-1.7.36.pom`.
+- **Used for:** the logging facade that SSHD and FtpServer both require
+- **Notes:** pinned at 1.7.36 because both libraries declare that version and
+  SSHD's parent POM carries an explicit warning against going beyond it. No
+  published binding exists for 1.7 on Android, so this project supplies its own
+  under `org/slf4j/impl/` in `:feature:fileserver` - about a hundred lines that
+  forward to Logcat. That is also what keeps the release build quiet: SSHD logs
+  at DEBUG on nearly every packet, and Logcat is world-readable on the device.
+
+### usb-serial-for-android
+
+- **Artifact:** `com.github.mik3y:usb-serial-for-android` 3.11.0, from JitPack
+- **Licence:** **MIT** - verified by reading `LICENSE.txt` in the upstream
+  repository (Copyright 2011-2013 Google Inc., 2013 Mike Wakerly).
+- **Used for:** the USB-to-serial drivers behind the serial console - FTDI,
+  Prolific PL2303, Silicon Labs CP210x, WCH CH34x and CDC/ACM.
+- **Notes:** the only dependency not served from Maven Central or Google. The
+  JitPack repository is declared in `settings.gradle.kts` with a content filter
+  restricting it to the group `com.github.mik3y`, so it cannot answer for any
+  other dependency. The AAR carries its own R8 rule for the reflection its
+  prober uses; no rule was added in `:app`.
+
 ## Why these and not the obvious alternatives
 
 The natural choice for terminal emulation would have been Termux's

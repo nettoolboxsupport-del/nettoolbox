@@ -58,6 +58,21 @@
          introduces one, it will show up in the merged release manifest under
          app/build/intermediates/merged_manifest/release/. -->
 
+    <!-- ==== Note on RECEIVE_BOOT_COMPLETED =============================
+         Not declared here, but present in the merged release manifest. It is
+         contributed by androidx.work:work-runtime, which androidx.glance pulls
+         in for the home-screen widget - verified in glance-1.1.1.pom and in
+         app/build/outputs/logs/manifest-merger-release-report.txt.
+
+         It is not removed with tools:node="remove". WorkManager genuinely uses
+         it to reschedule work after a reboot, and stripping a permission a
+         library depends on to break it quietly is a worse trade than carrying
+         one this app never triggers itself.
+
+         Recorded because it was mistaken for a new permission when the file
+         server was added, and the merger report is where that question gets
+         answered rather than by counting lines in this file. -->
+
     <!-- ==== Hardware ==================================================== -->
     <uses-feature
         android:name="android.hardware.telephony"
@@ -95,6 +110,19 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- Offers NetToolbox when a known USB serial adapter or a Cisco
+                 USB console is plugged in, and opens the serial console. If
+                 the user accepts, Android also grants permission for that
+                 device, so connecting does not ask a second time. No
+                 permission is declared for any of this: USB host access is
+                 granted per device, by the user, at runtime. -->
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/usb_serial_device_filter" />
         </activity>
 
 

@@ -12,3 +12,7 @@ captures/
 *.keystore
 *.jks
 keystore.properties
+
+# Build output redirected to a file for review
+build-log.txt
+release-log.txt

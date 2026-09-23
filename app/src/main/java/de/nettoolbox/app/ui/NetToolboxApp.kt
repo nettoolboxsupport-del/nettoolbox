@@ -8,6 +8,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -19,10 +20,25 @@ import de.nettoolbox.app.navigation.NetToolboxNavHost
 import de.nettoolbox.app.navigation.TopLevelDestination
 import de.nettoolbox.app.navigation.isInHierarchyOf
 import de.nettoolbox.app.navigation.navigateToTopLevel
+import de.nettoolbox.feature.serial.navigation.navigateToSerial
 
+/**
+ * @param serialConsoleRequest increases each time a USB serial adapter was
+ *   plugged in and the system handed the event to this app. Every new value
+ *   opens the serial console once; zero means no request.
+ */
 @Composable
-fun NetToolboxApp(modifier: Modifier = Modifier) {
+fun NetToolboxApp(
+    modifier: Modifier = Modifier,
+    serialConsoleRequest: Long = 0L,
+) {
     val navController = rememberNavController()
+
+    // An effect rather than a direct call: it runs after the NavHost below has
+    // been composed and has its graph, which navigate() requires.
+    LaunchedEffect(serialConsoleRequest) {
+        if (serialConsoleRequest > 0) navController.navigateToSerial()
+    }
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = currentBackStackEntry?.destination
 

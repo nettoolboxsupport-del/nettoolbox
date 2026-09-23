@@ -60,6 +60,36 @@ object ThirdPartyComponents {
             url = "https://www.bouncycastle.org/licence.html",
         ),
         ThirdPartyComponent(
+            name = "Apache MINA SSHD",
+            licence = "Apache 2.0",
+            usedFor = "SFTP and SCP server",
+            url = "https://github.com/apache/mina-sshd",
+        ),
+        ThirdPartyComponent(
+            name = "Apache FtpServer",
+            licence = "Apache 2.0",
+            usedFor = "FTP and FTPS server",
+            url = "https://mina.apache.org/ftpserver-project/",
+        ),
+        ThirdPartyComponent(
+            name = "Apache MINA",
+            licence = "Apache 2.0",
+            usedFor = "Network layer beneath Apache FtpServer",
+            url = "https://mina.apache.org/",
+        ),
+        ThirdPartyComponent(
+            name = "SLF4J",
+            licence = "MIT",
+            usedFor = "Logging facade required by the two server libraries",
+            url = "https://www.slf4j.org/license.html",
+        ),
+        ThirdPartyComponent(
+            name = "usb-serial-for-android",
+            licence = "MIT",
+            usedFor = "USB-to-serial drivers for the serial console",
+            url = "https://github.com/mik3y/usb-serial-for-android",
+        ),
+        ThirdPartyComponent(
             name = "MapLibre GL Native",
             licence = "BSD 2-clause",
             usedFor = "Map rendering",

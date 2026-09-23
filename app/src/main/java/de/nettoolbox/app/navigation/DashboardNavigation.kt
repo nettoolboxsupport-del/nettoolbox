@@ -28,6 +28,8 @@ fun NavGraphBuilder.dashboardScreen(
     onOpenIperf: () -> Unit,
     onOpenMap: () -> Unit,
     onOpenSsh: () -> Unit,
+    onOpenFileServer: () -> Unit,
+    onOpenSerial: () -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     composable<DashboardRoute> {
@@ -38,6 +40,8 @@ fun NavGraphBuilder.dashboardScreen(
             onOpenIperf = onOpenIperf,
             onOpenMap = onOpenMap,
             onOpenSsh = onOpenSsh,
+            onOpenFileServer = onOpenFileServer,
+            onOpenSerial = onOpenSerial,
             onOpenSettings = onOpenSettings,
         )
     }

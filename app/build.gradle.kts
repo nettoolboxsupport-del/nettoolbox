@@ -48,8 +48,8 @@ android {
         // reused, not even for a rejected release. versionName is what users
         // see; the phase suffix was a development marker and has no place in a
         // published build.
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -147,8 +147,10 @@ dependencies {
     implementation(project(":core:ui"))
 
     implementation(project(":feature:cellular"))
+    implementation(project(":feature:fileserver"))
     implementation(project(":feature:iperf"))
     implementation(project(":feature:map"))
+    implementation(project(":feature:serial"))
     implementation(project(":feature:ssh"))
     implementation(project(":feature:tools"))
     implementation(project(":feature:wifi"))

@@ -5,7 +5,8 @@ Telemetrie.
 
 Mobilfunk- und WLAN-Analyse, Ping, Traceroute, DNS, Portscanner, IP-Scanner,
 HTTP/TLS-Inspektor, Subnetzrechner, Wake-on-LAN, Durchsatzmessung mit echtem
-iperf3 und ein SSH-Terminal mit VT/xterm-Emulation.
+iperf3, ein SSH-Terminal mit VT/xterm-Emulation und ein Dateiserver, der
+denselben Ordner über TFTP, FTP, SFTP und SCP bereitstellt.
 
 **Alle Messdaten bleiben auf dem Gerät.** Kein Konto, kein Server, keine
 Analyse-Bibliotheken. Ein Export findet nur statt, wenn der Nutzer ihn auslöst
@@ -21,6 +22,8 @@ und das Ziel selbst wählt. Siehe [PRIVACY.md](PRIVACY.md).
 | **Durchsatz** | iperf3 als Client und als Server, echtes libiperf, kein Eigenbau |
 | **SSH** | Terminal mit libvterm, Host-Key-Prüfung ohne Umgehungsmöglichkeit, Verbindungsprofile |
 | **Karte** | MapLibre, OpenCelliD-Import, Messfahrten auf der Karte |
+| **Dateien** | Dateiexplorer mit Prüfsummen, und derselbe Ordner als Server: TFTP (mit blksize, windowsize, tsize), FTP und FTPS, SFTP und klassisches SCP |
+| **Serielle Konsole** | Terminal über USB-Seriell-Adapter (FTDI, CP210x, PL2303, CH34x) und den USB-Konsolenport von Cisco; BREAK, Einfügen mit Zeilenpause, Mitschnitt in die Freigabe |
 
 ## Bauen
 
@@ -42,8 +45,8 @@ Ein Gradle-Wrapper liegt bei, eine eigene Gradle-Installation ist nicht nötig.
 
 ## Technischer Zuschnitt
 
-Kotlin, Jetpack Compose, Material 3. Fünfzehn Gradle-Module: `:app`, fünf
-`:core`-Module, sechs `:feature`-Module und drei `:native`-Module mit C-Code
+Kotlin, Jetpack Compose, Material 3. Achtzehn Gradle-Module: `:app`, sechs
+`:core`-Module, acht `:feature`-Module und drei `:native`-Module mit C-Code
 über JNI. Hilt für Abhängigkeiten, Room und DataStore für Persistenz,
 kotlinx.serialization, MapLibre statt Google Maps.
 

@@ -1,4 +1,4 @@
-package de.nettoolbox.feature.ssh.ui
+package de.nettoolbox.core.terminal
 
 import android.graphics.Paint
 import android.graphics.Typeface

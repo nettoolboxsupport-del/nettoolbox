@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Labels of the extra-key bar shared by the SSH terminal and the
+         serial console. -->
+    <string name="terminal_mod_esc">ESC</string>
+    <string name="terminal_mod_tab">TAB</string>
+    <string name="terminal_mod_ctrl">CTRL</string>
+    <string name="terminal_mod_alt">ALT</string>
+    <string name="terminal_mod_fn">Fn</string>
+</resources>

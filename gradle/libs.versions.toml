@@ -34,6 +34,27 @@ jsch = "2.28.6"
 # key exchange are unavailable, which rules out many current servers.
 bouncycastle = "1.80"
 
+# --- File server (phase 8) ---------------------------------------------------
+# Apache MINA SSHD supplies the SFTP subsystem and the legacy SCP command.
+# Both are needed, not one: OpenSSH 9 and later route "scp" through SFTP, while
+# Cisco IOS "copy scp:" still speaks the original SCP protocol - and network
+# gear is exactly the audience for this feature.
+sshd = "2.18.0"
+# Apache FtpServer for FTP and FTPS. 1.2.1 is the current release.
+ftpserver = "1.2.1"
+# Pinned deliberately. Both SSHD and FtpServer declare slf4j 1.7.36, and SSHD's
+# parent POM carries an explicit warning against going beyond it. The Logcat
+# binding for it is written in this project (SLF4J 1.7 binds through a
+# compile-time link to org.slf4j.impl.StaticLoggerBinder, so no ServiceLoader
+# and no reflection are involved - and the release build stays silent).
+slf4j = "1.7.36"
+
+# --- Serial console (phase 9) ------------------------------------------------
+# USB-to-serial drivers in plain Java: FTDI, Prolific PL2303, Silabs CP210x,
+# WCH CH34x and generic CDC/ACM - the last being what Cisco's own USB console
+# port speaks. MIT licence. JitPack only; see settings.gradle.kts.
+usbSerial = "3.11.0"
+
 # --- App widget --------------------------------------------------------------
 # Glance is the Compose-based widget API. 1.1.1 is the newest stable release
 # per Google's Maven group index (1.2.0 is still rc). Chosen over classic
@@ -102,6 +123,14 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 maplibre-android-sdk = { group = "org.maplibre.gl", name = "android-sdk", version.ref = "maplibre" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 jsch = { group = "com.github.mwiede", name = "jsch", version.ref = "jsch" }
+
+# --- File server -------------------------------------------------------------
+sshd-core = { group = "org.apache.sshd", name = "sshd-core", version.ref = "sshd" }
+sshd-sftp = { group = "org.apache.sshd", name = "sshd-sftp", version.ref = "sshd" }
+sshd-scp = { group = "org.apache.sshd", name = "sshd-scp", version.ref = "sshd" }
+ftpserver-core = { group = "org.apache.ftpserver", name = "ftpserver-core", version.ref = "ftpserver" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+usb-serial = { group = "com.github.mik3y", name = "usb-serial-for-android", version.ref = "usbSerial" }
 bouncycastle-provider = { group = "org.bouncycastle", name = "bcprov-jdk18on", version.ref = "bouncycastle" }
 
 # --- Testing -----------------------------------------------------------------

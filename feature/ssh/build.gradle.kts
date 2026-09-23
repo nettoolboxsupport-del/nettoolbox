@@ -39,6 +39,7 @@ kotlin {
 dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:ui"))
+    implementation(project(":core:terminal"))
     implementation(project(":native:vterm"))
 
     implementation(libs.androidx.core.ktx)

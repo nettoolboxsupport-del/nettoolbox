@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="feature_fileserver_title">Dateien</string>
+
+    <!-- ==== Reiter ======================================================== -->
+    <string name="fileserver_tab_explorer">Dateien</string>
+    <string name="fileserver_tab_servers">Server</string>
+    <string name="fileserver_tab_accounts">Konten</string>
+    <string name="fileserver_tab_log">Protokoll</string>
+
+    <!-- ==== Vordergrunddienst ============================================= -->
+    <string name="fileserver_channel_name">Dateiserver</string>
+    <string name="fileserver_channel_description">Wird angezeigt, solange das Gerät Dateien über TFTP, FTP oder SSH bereitstellt.</string>
+    <string name="fileserver_notification_title">Dateien werden bereitgestellt</string>
+    <string name="fileserver_notification_stop">Beenden</string>
+    <string name="fileserver_notification_open_write">Jeder in diesem Netz kann Dateien schreiben</string>
+    <plurals name="fileserver_notification_text">
+        <item quantity="one">%d Dienst läuft</item>
+        <item quantity="other">%d Dienste laufen</item>
+    </plurals>
+
+    <!-- ==== Explorer ====================================================== -->
+    <string name="explorer_root">Freigabe</string>
+    <string name="explorer_up">Eine Ebene höher</string>
+    <string name="explorer_empty_title">Dieser Ordner ist leer</string>
+    <string name="explorer_empty_body">Dateien über die Schaltfläche „Importieren“ hinzufügen, oder von einem Client hochladen lassen, sobald ein Server läuft.</string>
+    <string name="explorer_free_space">%1$s frei</string>
+    <string name="explorer_item_count">%1$d Einträge</string>
+    <string name="explorer_selected">%1$d ausgewählt</string>
+    <string name="explorer_select_all">Alles auswählen</string>
+    <string name="explorer_clear_selection">Auswahl aufheben</string>
+    <string name="explorer_new_folder">Neuer Ordner</string>
+    <string name="explorer_folder_name">Ordnername</string>
+    <string name="explorer_rename">Umbenennen</string>
+    <string name="explorer_new_name">Neuer Name</string>
+    <string name="explorer_delete">Löschen</string>
+    <string name="explorer_copy">Kopieren</string>
+    <string name="explorer_cut">Verschieben</string>
+    <string name="explorer_paste_pending">%1$d zum Einfügen bereit</string>
+    <string name="explorer_import">Importieren</string>
+    <string name="explorer_export">Speichern unter…</string>
+    <string name="explorer_checksum">Prüfsumme</string>
+    <string name="explorer_sort">Sortieren</string>
+    <string name="explorer_sort_name">Name</string>
+    <string name="explorer_sort_size">Größe</string>
+    <string name="explorer_sort_modified">Geändert</string>
+    <string name="explorer_sort_kind">Typ</string>
+    <string name="explorer_show_hidden">Versteckte Dateien anzeigen</string>
+    <string name="explorer_cancel_copy">Abbrechen</string>
+    <string name="explorer_copying">%1$s wird kopiert</string>
+    <string name="explorer_copy_progress">%1$d von %2$d Dateien, %3$s von %4$s</string>
+
+    <string name="explorer_confirm_delete_title">Endgültig löschen?</string>
+    <plurals name="explorer_confirm_delete_body">
+        <item quantity="one">%d Eintrag wird gelöscht. Das lässt sich nicht rückgängig machen, und es gibt keinen Papierkorb.</item>
+        <item quantity="other">%d Einträge werden gelöscht. Das lässt sich nicht rückgängig machen, und es gibt keinen Papierkorb.</item>
+    </plurals>
+
+    <string name="explorer_preview_binary">Diese Datei ist kein Text. Statt einer Bildschirmseite unlesbarer Zeichen wird nichts angezeigt.</string>
+    <string name="explorer_preview_truncated">Die ersten 256 KB von %1$s.</string>
+
+    <string name="explorer_checksum_title">Prüfsumme von %1$s</string>
+    <string name="explorer_checksum_hint">Mit dem Wert des Herstellers vergleichen. Ein Firmware-Abbild, das sich um ein einziges Byte unterscheidet, ist nicht das Abbild, das du installieren wolltest.</string>
+    <string name="explorer_checksum_copy">Kopieren</string>
+
+    <!-- ==== Fehler bei Dateioperationen =================================== -->
+    <string name="fileop_error_outside">Dieser Pfad verlässt die Freigabe und wurde abgelehnt.</string>
+    <string name="fileop_error_exists">Unter diesem Namen liegt dort schon etwas.</string>
+    <string name="fileop_error_not_found">Das ist nicht mehr vorhanden.</string>
+    <string name="fileop_error_not_writable">In diesen Ordner kann nicht geschrieben werden.</string>
+    <string name="fileop_error_invalid_name">Ein Name darf nicht leer sein und keines dieser Zeichen enthalten: / \\ : * ? &quot; &lt; &gt; |</string>
+    <string name="fileop_error_target_inside">Ein Ordner kann nicht in sich selbst kopiert werden.</string>
+    <string name="fileop_error_io">Hat nicht geklappt: %1$s</string>
+    <string name="fileop_error_io_unknown">Hat nicht geklappt.</string>
+
+    <!-- ==== Server ======================================================== -->
+    <string name="servers_start">Starten</string>
+    <string name="servers_stop">Beenden</string>
+    <string name="servers_starting">Wird gestartet…</string>
+    <string name="servers_running_since">Läuft seit %1$s</string>
+    <string name="servers_auto_stop_at">Endet automatisch um %1$s</string>
+    <string name="servers_nothing_enabled">Schalte unten mindestens ein Protokoll ein.</string>
+
+    <string name="servers_reachable_title">Erreichbar unter</string>
+    <string name="servers_reachable_hint">Wenn ein Client sich nicht verbinden kann, trennt das Netz seine Geräte voneinander. Das ist eine Einstellung am Access Point, nicht an diesem Telefon.</string>
+    <string name="servers_copy_address">Kopieren</string>
+
+    <string name="servers_port_note_title">Warum die Ports ungewöhnlich sind</string>
+    <string name="servers_port_note_body">Android führt Apps ohne Privilegien aus, und das System verweigert jeden Port unter 1024. TFTP kann nicht auf 69, FTP nicht auf 21 und SSH nicht auf 22 — das kann keine App auf einem Telefon ohne Root. Clients, denen man einen Port nennen kann, funktionieren normal. Clients, bei denen das nicht geht — darunter manche Netzwerktechnik über TFTP — erreichen diesen Server nicht.</string>
+
+    <string name="servers_bind_title">Lauschen auf</string>
+    <string name="servers_bind_wifi">Nur WLAN</string>
+    <string name="servers_bind_all">Allen Schnittstellen</string>
+    <string name="servers_bind_loopback">Nur diesem Gerät</string>
+    <string name="servers_bind_wifi_hint">Im Mobilfunknetz hat dein Telefon häufig eine öffentlich erreichbare IPv6-Adresse. „Nur WLAN“ hält die Freigabe davon fern.</string>
+    <string name="servers_bind_all_warning">Die Freigabe ist dann auch über Mobilfunk erreichbar — unter Umständen aus dem offenen Internet.</string>
+
+    <string name="servers_auto_stop_title">Automatisch beenden nach</string>
+    <string name="servers_auto_stop_off">Nie</string>
+    <string name="servers_auto_stop_minutes">%1$d Minuten</string>
+    <string name="servers_auto_stop_hint">Der übliche Weg, wie das schiefgeht, ist kein Angriff. Es ist: Arbeit fertig, Telefon in die Tasche, und eine beschreibbare Freigabe läuft den ganzen Nachmittag im Kundennetz weiter.</string>
+    <string name="servers_keep_awake">Prozessor beim Bereitstellen wach halten</string>
+    <string name="servers_keep_awake_hint">Ohne das bleibt eine lange Übertragung stehen, sobald der Bildschirm ausgeht.</string>
+
+    <string name="servers_open_write_warning">Ein Client kann ohne Anmeldung schreiben. Jeder, der diesen Port erreicht, kann eine Datei auf deinem Telefon ablegen.</string>
+
+    <!-- TFTP -->
+    <string name="tftp_title">TFTP</string>
+    <string name="tftp_summary">Was Switches und Router für Firmware und Konfigurationen benutzen. Eine Authentifizierung gibt es im Protokoll nicht.</string>
+    <string name="tftp_port">Port</string>
+    <string name="tftp_allow_upload">Hochladen erlauben</string>
+    <string name="tftp_allow_upload_warning">TFTP kennt weder Passwörter noch Benutzernamen — beides ist im Protokoll nicht vorgesehen. Eingeschaltet heißt: Jeder, der den Port erreicht, kann in die Freigabe schreiben.</string>
+    <string name="tftp_allow_overwrite">Vorhandene Dateien überschreiben lassen</string>
+    <string name="tftp_block_size">Maximale Blockgröße</string>
+    <string name="tftp_block_size_hint">1468 Byte ist das Größte, was noch in einen Ethernet-Rahmen passt. Der Protokollstandard von 512 ist etwa dreimal langsamer.</string>
+    <string name="tftp_window_size">Fenstergröße</string>
+    <string name="tftp_window_size_hint">Wie viele Blöcke ohne Bestätigung gesendet werden dürfen. Ein Fenster von 1 begrenzt den Durchsatz auf einen Block je Paketumlauf. Clients, die die Option nicht kennen, verwenden sie einfach nicht.</string>
+    <string name="tftp_timeout">Zeitüberschreitung (Sekunden)</string>
+
+    <!-- FTP -->
+    <string name="ftp_title">FTP</string>
+    <string name="ftp_summary">Breit unterstützt — und für jeden im Netz mitlesbar, solange TLS aus ist.</string>
+    <string name="ftp_port">Port</string>
+    <string name="ftp_anonymous">Anonymen Zugriff erlauben</string>
+    <string name="ftp_anonymous_write">Anonyme dürfen schreiben</string>
+    <string name="ftp_passive_range">Portbereich für passive Übertragung</string>
+    <string name="ftp_passive_hint">Eine passive Übertragung öffnet eine zweite Verbindung auf einem dieser Ports. Erst ein fester Bereich macht den Server durch eine Firewall hindurch benutzbar.</string>
+    <string name="ftp_tls">Mit TLS verschlüsseln (FTPS)</string>
+    <string name="ftp_tls_hint">Benutzt ein Zertifikat, das dieses Gerät sich selbst ausstellt. Jeder Client wird warnen, dass er die Gegenstelle nicht prüfen kann — zu Recht. Was es bringt: Passwörter und Dateiinhalte sind für andere im selben Netz nicht mehr lesbar. Für eine Verbindung, die auch die Gegenstelle nachweist, nimm SFTP.</string>
+    <string name="ftp_max_logins">Gleichzeitige Anmeldungen</string>
+    <string name="ftp_idle_timeout">Leerlauf-Zeitüberschreitung (Sekunden)</string>
+
+    <!-- SSH -->
+    <string name="ssh_title">SFTP und SCP</string>
+    <string name="ssh_summary">Verschlüsselt und authentifiziert. Die richtige Wahl in jedem Netz, das dir nicht gehört.</string>
+    <string name="ssh_port">Port</string>
+    <string name="ssh_enable_sftp">SFTP-Subsystem</string>
+    <string name="ssh_enable_scp">Klassisches SCP</string>
+    <string name="ssh_enable_scp_hint">OpenSSH ab Version 9 wickelt den Befehl „scp“ über SFTP ab — moderne Clients brauchen deshalb nur das Subsystem darüber. Cisco IOS und vergleichbare Technik sprechen weiterhin das ursprüngliche SCP und brauchen das hier.</string>
+    <string name="ssh_password_auth">Anmeldung per Passwort erlauben</string>
+    <string name="ssh_no_shell_note">Dieser Server gibt Dateien heraus und sonst nichts. Eine Shell gibt es nicht, für niemanden.</string>
+
+    <string name="ssh_host_key_title">Hostschlüssel</string>
+    <string name="ssh_host_key_hint">Vergleiche das mit dem Fingerabdruck, den dein Client beim ersten Verbinden anzeigt. Stimmt er überein, ist die Verbindung bei diesem Telefon gelandet und nicht bei etwas dazwischen.</string>
+    <string name="ssh_host_key_copy">Öffentlichen Schlüssel kopieren</string>
+    <string name="ssh_host_key_regenerate">Neuen Schlüssel erzeugen</string>
+    <string name="ssh_host_key_regenerate_title">Hostschlüssel ersetzen?</string>
+    <string name="ssh_host_key_regenerate_body">Jeder Client, der sich bisher verbunden hat, wird die nächste Verbindung verweigern und melden, die Identität des Hosts habe sich geändert. Bei jedem muss der gespeicherte Eintrag von Hand entfernt werden. Mach das nur, wenn du annimmst, dass der jetzige Schlüssel vom Gerät kopiert wurde.</string>
+
+    <!-- ==== Protokollstatus =============================================== -->
+    <string name="protocol_running">Läuft auf Port %1$d</string>
+    <string name="protocol_stopped">Aus</string>
+    <string name="protocol_failed_port_in_use">Port %1$d ist bereits belegt.</string>
+    <string name="protocol_failed_privileged">Ports unter 1024 sind nicht möglich. Wähle einen höheren.</string>
+    <string name="protocol_failed_no_bind">Keine WLAN-Adresse. Verbinde dich mit einem Netz oder ändere „Lauschen auf“.</string>
+    <string name="protocol_failed_tls">Das Gerät konnte kein TLS-Zertifikat erzeugen. Schalte FTPS ab, um ohne zu starten.</string>
+    <string name="protocol_failed_other">Der Start ist fehlgeschlagen. Einzelheiten stehen im Protokoll.</string>
+
+    <!-- ==== Konten ======================================================== -->
+    <string name="accounts_title">Konten</string>
+    <string name="accounts_hint">FTP und SSH fragen danach. TFTP kann das nicht — das Protokoll kennt keine Benutzer.</string>
+    <string name="accounts_empty">Noch keine Konten. Ohne eines lässt sich nur anonymes FTP nutzen, und auch das nur, wenn du es einschaltest.</string>
+    <string name="accounts_add">Konto anlegen</string>
+    <string name="accounts_username">Benutzername</string>
+    <string name="accounts_password">Passwort</string>
+    <string name="accounts_generate">Erzeugen</string>
+    <string name="accounts_show_password">Passwort anzeigen</string>
+    <string name="accounts_home">Ordner (optional)</string>
+    <string name="accounts_home_hint">Leer lassen für die ganze Freigabe. Ein Switch, der nur Firmware holt, hat keinen Grund, den Rest zu sehen.</string>
+    <string name="accounts_can_write">Darf hochladen, ändern und löschen</string>
+    <string name="accounts_enabled">Aktiv</string>
+    <string name="accounts_read_only">Nur lesen</string>
+    <string name="accounts_read_write">Lesen und schreiben</string>
+    <string name="accounts_delete">Entfernen</string>
+    <string name="accounts_password_storage_note">Passwörter liegen im Klartext im privaten Speicher dieser App, damit sie sich wieder anzeigen lassen, wenn du eines in einen Client eintippen musst. Ein Passwort-Hash ließe sich nie wieder anzeigen — und genau so landet man in der Praxis bei „1234“.</string>
+
+    <string name="accounts_keys_title">Öffentliche Schlüssel</string>
+    <string name="accounts_keys_hint">Eine OpenSSH-Zeile je Schlüssel. Das ist die einzige Anmeldung hier, die niemand vom Bildschirm ablesen kann.</string>
+    <string name="accounts_keys_add">Schlüssel hinzufügen</string>
+    <string name="accounts_keys_paste">Die Zeile aus deiner id_ed25519.pub oder id_rsa.pub einfügen</string>
+    <string name="accounts_keys_empty">Keine Schlüssel gespeichert.</string>
+    <string name="accounts_keys_remove">Entfernen</string>
+
+    <!-- ==== Protokoll ===================================================== -->
+    <string name="log_empty">Noch nichts. Verbindungen und Übertragungen erscheinen hier, während die Server laufen.</string>
+    <string name="log_clear">Leeren</string>
+    <string name="log_totals">%1$s gesendet · %2$s empfangen</string>
+    <string name="log_throughput">%1$s in %2$s (%3$s)</string>
+
+    <string name="log_msg_transfer_complete">Übertragung abgeschlossen</string>
+    <string name="log_msg_tftp_malformed">Unlesbares Paket, verworfen</string>
+    <string name="log_msg_tftp_mode">Nicht unterstützter Übertragungsmodus</string>
+    <string name="log_msg_tftp_outside">Pfad außerhalb der Freigabe, abgelehnt</string>
+    <string name="log_msg_tftp_notfound">Datei nicht gefunden</string>
+    <string name="log_msg_tftp_readonly">Hochladen abgelehnt: Uploads sind ausgeschaltet</string>
+    <string name="log_msg_tftp_exists">Hochladen abgelehnt: Die Datei gibt es bereits</string>
+    <string name="log_msg_tftp_notwritable">In den Ordner kann nicht geschrieben werden</string>
+    <string name="log_msg_tftp_diskfull">Abgelehnt: nicht genug Speicher auf dem Gerät</string>
+    <string name="log_msg_tftp_timeout">Client antwortet nicht mehr</string>
+    <string name="log_msg_tftp_oack">Client hat die ausgehandelten Optionen nicht bestätigt</string>
+    <string name="log_msg_tftp_abort">Client hat die Übertragung abgebrochen</string>
+    <string name="log_msg_tftp_rename">Upload beendet, konnte aber nicht unter seinem Namen abgelegt werden</string>
+    <string name="log_msg_tftp_write">Schreiben fehlgeschlagen</string>
+
+    <string name="log_msg_ftp_connected">Verbunden</string>
+    <string name="log_msg_ftp_disconnected">Getrennt</string>
+    <string name="log_msg_ftp_login_ok">Angemeldet</string>
+    <string name="log_msg_ftp_login_failed">Anmeldung fehlgeschlagen</string>
+    <string name="log_msg_ftp_sent">Gesendet</string>
+    <string name="log_msg_ftp_received">Empfangen</string>
+    <string name="log_msg_ftp_transfer_failed">Übertragung fehlgeschlagen</string>
+    <string name="log_msg_ftp_deleted">Gelöscht</string>
+    <string name="log_msg_ftp_created">Ordner angelegt</string>
+
+    <string name="log_msg_ssh_login_ok">Mit Passwort angemeldet</string>
+    <string name="log_msg_ssh_login_key">Mit Schlüssel angemeldet</string>
+    <string name="log_msg_ssh_login_failed">Anmeldung fehlgeschlagen</string>
+    <string name="log_msg_ssh_readonly">Schreiben abgelehnt: Dieses Konto darf nur lesen</string>
+    <string name="log_msg_ssh_link">Symbolische Verknüpfung abgelehnt</string>
+    <string name="log_msg_ssh_transfer_failed">Übertragung fehlgeschlagen</string>
+
+    <string name="log_msg_server_autostop">Automatisch beendet</string>
+
+    <!-- ==== Gemeinsam ===================================================== -->
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Abbrechen</string>
+    <string name="action_close">Schließen</string>
+    <string name="action_save">Speichern</string>
+    <string name="action_delete">Löschen</string>
+
+</resources>

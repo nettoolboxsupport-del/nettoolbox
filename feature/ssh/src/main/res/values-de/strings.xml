@@ -63,10 +63,5 @@
     <string name="ssh_known_host_added">Vertraut seit: %1$s</string>
 
     <!-- Tastatur-Zusatzleiste -->
-    <string name="ssh_mod_esc">ESC</string>
-    <string name="ssh_mod_tab">TAB</string>
-    <string name="ssh_mod_ctrl">STRG</string>
-    <string name="ssh_mod_alt">ALT</string>
-    <string name="ssh_mod_fn">Fn</string>
     <string name="ssh_mod_keys_title">Sondertasten</string>
 </resources>
